@@ -1,0 +1,9 @@
+h1 {
+  color: blue;
+  text-align: center;
+}
+
+.test {
+  display: flex;
+  margin-left: 300px;
+}
