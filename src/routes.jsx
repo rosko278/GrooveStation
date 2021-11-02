@@ -1,0 +1,22 @@
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import ArtistsPage from './pages/ArtistPage';
+import HomePage from './pages/HomePage';
+import AlbumPage from './pages/AlbumPage';
+import GenderPage from './pages/GenderPage';
+import LibraryPage from './pages/LibraryPage';
+
+export default function Routage() {
+  return (
+    <>
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/artist" component={ArtistsPage} />
+        <Route exact path="/album" component={AlbumPage} />
+        <Route exact path="/gender" component={GenderPage} />
+        <Route exact path="/library" component={LibraryPage} />
+      </Switch>
+      ;
+    </>
+  );
+}

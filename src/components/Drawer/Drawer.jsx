@@ -158,7 +158,7 @@ export default function SwipeableTemporaryDrawer() {
         <a href="https://github.com/YoannBoisson">
           <GitHubIcon />
         </a>
-        Yoann <MenuIcon />
+        Yoann
         <br />
         <a href="https://www.deezer.com/">
           <DeezerLogo />
