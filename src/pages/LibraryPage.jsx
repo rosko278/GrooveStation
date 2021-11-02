@@ -1,12 +1,14 @@
 import React from 'react';
-import Working from '../components/onProgress/Working';
+import CardPlaylist from '../containers/CardPlaylist';
+
 import './pages.css';
 
 function LibraryPage() {
   return (
     <div>
       <h1>Library Page</h1>
-      <Working />
+      <h2>Playlist les plus écoutées</h2>
+      <CardPlaylist />
     </div>
   );
 }
