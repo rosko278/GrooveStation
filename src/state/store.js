@@ -9,12 +9,13 @@ import thunk from 'redux-thunk';
  * Imports reducers here
  */
 import chartTracksReducer from './chartTracks/chartTracksReducer';
-
+import chartAlbumReducer from './chartAlbum/chartAlbumReducer';
 /**
  * Creates root reducer which contains all reducers
  */
 const rootReducer = combineReducers({
   chartTracks: chartTracksReducer,
+  chartAlbum: chartAlbumReducer,
 });
 
 /**

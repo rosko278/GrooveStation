@@ -1,18 +1,13 @@
 import React from 'react';
-import Working from '../components/onProgress/Working';
-import CardAlbum from '../components/CardAlbum';
+import CardAlbum from '../containers/CardAlbum';
 import './pages.css';
 
 function AlbumPage() {
   return (
     <div>
       <h1>Album Page</h1>
-      <Working />
-      <div className="test">
-        <CardAlbum />
-        <CardAlbum />
-        <CardAlbum />
-      </div>
+      <h2>Album les plus écoutés</h2>
+      <CardAlbum />
     </div>
   );
 }
