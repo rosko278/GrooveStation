@@ -1,9 +1,13 @@
 import * as React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { PropTypes } from 'prop-types';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
 import { apiGetSingleRadio } from '../api/apiSingleRadio';
+import PlayButton from '../components/PlayButton';
+import convertDuration from '../core/functions/convertDuration';
 import Loading from '../components/Loading';
-import Error from '../components/Error';
+import Error from '../components/ErrorMessage';
 
 function SingleRadioPage(props) {
   const dispatch = useDispatch();
@@ -49,11 +53,14 @@ function SingleRadioPage(props) {
                 <p>{content.title}</p>
               </td>
               <td>{content.artist.name}</td>
+              <td>{convertDuration(content.duration)}</td>
               <td>
-                {Math.floor(content.duration / 60)}min
-                {content.duration % 60}
+                <ListItemAvatar>
+                  <Avatar>
+                    <PlayButton url={content.preview} />
+                  </Avatar>
+                </ListItemAvatar>
               </td>
-              <td>{content.preview}</td>
             </tr>
           ))}
         </tbody>
