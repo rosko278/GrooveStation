@@ -1,13 +1,13 @@
-import chartPlaylistTypes from './chartPlaylistTypes';
+import radioTypes from './radioTypes';
 
-const initialStateChartPlaylist = {
+const initialStateRadio = {
   isLoading: false,
   top: [],
   error: '',
 };
 
-const chartPlaylistReducer = (state = initialStateChartPlaylist, action) => {
-  if (action.type === chartPlaylistTypes.LOAD_CHART_PLAYLIST) {
+const radioReducer = (state = initialStateRadio, action) => {
+  if (action.type === radioTypes.LOAD_RADIO) {
     return {
       ...state,
       isLoading: true,
@@ -15,7 +15,7 @@ const chartPlaylistReducer = (state = initialStateChartPlaylist, action) => {
       error: '',
     };
   }
-  if (action.type === chartPlaylistTypes.LOAD_CHART_PLAYLIST_SUCCESS) {
+  if (action.type === radioTypes.LOAD_RADIO_SUCCESS) {
     return {
       ...state,
       isLoading: false,
@@ -31,4 +31,4 @@ const chartPlaylistReducer = (state = initialStateChartPlaylist, action) => {
   };
 };
 
-export default chartPlaylistReducer;
+export default radioReducer;

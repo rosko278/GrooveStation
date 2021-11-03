@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import { PropTypes } from 'prop-types';
 import { apiGetSingleAlbum } from '../api/apiSingleAlbum';
 import Loading from '../components/Loading';
+import Error from '../components/Error';
 
 function SingleAlbumPage(props) {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ function SingleAlbumPage(props) {
     return <Loading />;
   }
   if (singleAlbum.error) {
-    return <div>Error</div>;
+    return <Error errorMsg="Impossible de charger l'album' !" />;
   }
 
   return (

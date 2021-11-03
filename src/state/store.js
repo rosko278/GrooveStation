@@ -11,7 +11,8 @@ import thunk from 'redux-thunk';
 import chartTracksReducer from './chartTracks/chartTracksReducer';
 import chartAlbumReducer from './chartAlbum/chartAlbumReducer';
 import singleAlbumReducer from './singleAlbum/singleAlbumReducer';
-import chartPlaylistReducer from './chartPlaylist/chartPlaylistReducer';
+import radioReducer from './radio/radioReducer';
+import singleRadioReducer from './singleRadio/singleRadioReducer';
 import rssReducer from './fluxRSSmusicNews/rssReducer';
 import genderReducer from './gender/genderReducer';
 
@@ -22,7 +23,8 @@ const rootReducer = combineReducers({
   chartTracks: chartTracksReducer,
   chartAlbum: chartAlbumReducer,
   singleAlbum: singleAlbumReducer,
-  chartPlaylist: chartPlaylistReducer,
+  radio: radioReducer,
+  singleRadio: singleRadioReducer,
   fluxRss: rssReducer,
   gender: genderReducer,
 });

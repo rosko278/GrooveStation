@@ -6,6 +6,7 @@ import AlbumPage from './pages/AlbumPage';
 import GenderPage from './pages/GenderPage';
 import LibraryPage from './pages/LibraryPage';
 import SingleAlbumPage from './containers/SingleAlbumPage';
+import SingleRadioPage from './containers/SingleRadioPage';
 
 export default function Routage() {
   return (
@@ -17,6 +18,7 @@ export default function Routage() {
         <Route exact path="/gender" component={GenderPage} />
         <Route exact path="/library" component={LibraryPage} />
         <Route exact path="/album/:id" component={SingleAlbumPage} />
+        <Route exact path="/library/:id" component={SingleRadioPage} />
       </Switch>
       ;
     </>
