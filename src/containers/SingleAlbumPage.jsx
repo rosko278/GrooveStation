@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { PropTypes } from 'prop-types';
 import { apiGetSingleAlbum } from '../api/apiSingleAlbum';
+import Loading from '../components/Loading';
 
 function SingleAlbumPage(props) {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ function SingleAlbumPage(props) {
   }, [dispatch]);
 
   if (singleAlbum.isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
   if (singleAlbum.error) {
     return <div>Error</div>;

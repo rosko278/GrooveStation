@@ -13,6 +13,8 @@ import chartAlbumReducer from './chartAlbum/chartAlbumReducer';
 import singleAlbumReducer from './singleAlbum/singleAlbumReducer';
 import chartPlaylistReducer from './chartPlaylist/chartPlaylistReducer';
 import rssReducer from './fluxRSSmusicNews/rssReducer';
+import genderReducer from './gender/genderReducer';
+
 /**
  * Creates root reducer which contains all reducers
  */
@@ -22,6 +24,7 @@ const rootReducer = combineReducers({
   singleAlbum: singleAlbumReducer,
   chartPlaylist: chartPlaylistReducer,
   fluxRss: rssReducer,
+  gender: genderReducer,
 });
 
 /**
