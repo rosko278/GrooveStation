@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import { useSelector, useDispatch } from 'react-redux';
 import apiGender from '../api/apiGender';
 import Loading from '../components/Loading';
-import Error from '../components/Error';
+import Error from '../components/ErrorMessage';
 
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
   position: 'relative',
