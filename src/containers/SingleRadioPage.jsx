@@ -2,6 +2,8 @@ import * as React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { apiGetSingleRadio } from '../api/apiSingleRadio';
+import Loading from '../components/Loading';
+import Error from '../components/Error';
 
 function SingleRadioPage(props) {
   const dispatch = useDispatch();
@@ -14,10 +16,10 @@ function SingleRadioPage(props) {
   }, [dispatch]);
 
   if (singleRadio.isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
   if (singleRadio.error) {
-    return <div>Error</div>;
+    return <Error errorMsg="Impossible de charger la radio' !" />;
   }
 
   return (
