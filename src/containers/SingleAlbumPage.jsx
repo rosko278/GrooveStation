@@ -6,7 +6,14 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { PropTypes } from 'prop-types';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import PlayButton from '../components/PlayButton';
+import convertDuration from '../core/functions/convertDuration';
 import { apiGetSingleAlbum } from '../api/apiSingleAlbum';
+import Loading from '../components/Loading';
+import ErrorMessage from '../components/ErrorMessage';
+import './single-page.css';
 
 function SingleAlbumPage(props) {
   const dispatch = useDispatch();
@@ -19,10 +26,10 @@ function SingleAlbumPage(props) {
   }, [dispatch]);
 
   if (singleAlbum.isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
   if (singleAlbum.error) {
-    return <div>Error</div>;
+    return <ErrorMessage errorMsg="Impossible de charger l'album' !" />;
   }
 
   return (
@@ -67,11 +74,14 @@ function SingleAlbumPage(props) {
               <td>
                 <p>{content.title}</p>
               </td>
+              <td>{convertDuration(content.duration)}</td>
               <td>
-                {Math.floor(content.duration / 60)}min
-                {content.duration % 60}
+                <ListItemAvatar>
+                  <Avatar>
+                    <PlayButton url={content.preview} />
+                  </Avatar>
+                </ListItemAvatar>
               </td>
-              <td>{content.preview}</td>
             </tr>
           ))}
         </tbody>

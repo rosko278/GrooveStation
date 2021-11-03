@@ -1,0 +1,27 @@
+.albumInfo {
+  margin: 1rem;
+  height: 90vh;
+}
+
+table {
+  display: table;
+  width: 100%;
+  border-spacing: 2px;
+}
+
+th {
+  text-align: left;
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 1.4em;
+}
+
+tr {
+  display: table-row;
+  vertical-align: middle;
+}
+
+td {
+  position: relative;
+  height: 40px;
+}

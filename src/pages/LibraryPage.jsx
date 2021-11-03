@@ -1,6 +1,5 @@
 import React from 'react';
-import CardPlaylist from '../containers/CardPlaylist';
-
+import CardRadio from '../containers/CardRadio';
 import './pages.css';
 
 function LibraryPage() {
@@ -8,7 +7,7 @@ function LibraryPage() {
     <div>
       <h1>Library Page</h1>
       <h2>Playlist les plus écoutées</h2>
-      <CardPlaylist />
+      <CardRadio />
     </div>
   );
 }
