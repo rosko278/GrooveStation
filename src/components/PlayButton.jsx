@@ -23,7 +23,7 @@ const PlayButton = ({ url }) => {
 
   return (
     <Fab color="primary" aria-label="add" onClick={toggle}>
-      {isPlaying ? <PlayCircleIcon /> : <PauseCircleIcon />}
+      {isPlaying ? <PauseCircleIcon /> : <PlayCircleIcon />}
     </Fab>
   );
 };
