@@ -150,9 +150,7 @@ export default function PrimarySearchAppBar() {
   );
 
   const [search, setSearch] = useState('');
-  useEffect(() => {
-    console.log(search);
-  }, [search]);
+  useEffect(() => {}, [search]);
 
   return (
     <Box sx={{ flexGrow: 1 }}>

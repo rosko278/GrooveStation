@@ -3,7 +3,6 @@ import PopularSongElement from '../components/PopularSongsList/PopularSongElemen
 import Lecteur from '../components/Lecteur/Lecteur';
 import ChartTracks from '../containers/ChartTracks';
 import FluxRssMusicNews from '../containers/FluxRssMusicNews';
-import HintResults from '../components/HintResult';
 import './pages.css';
 
 function HomePage() {
@@ -11,7 +10,6 @@ function HomePage() {
     <div>
       <ChartTracks />
       <h1>Homepage</h1>
-      <HintResults />
       <PopularSongElement />
       <Lecteur />
       <FluxRssMusicNews />

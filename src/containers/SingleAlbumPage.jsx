@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Card from '@mui/material/Card';
+/* import Card from '@mui/material/Card'; */
+import { Box } from '@mui/system';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
@@ -35,30 +36,44 @@ function SingleAlbumPage(props) {
 
   return (
     <div>
-      <Card sx={{ minWidth: 200, display: 'flex', height: 350, margin: 1 }}>
-        <img src={singleAlbum.album.cover_big} alt={singleAlbum.album.title} />
+      <Paper
+        square
+        elevation={10}
+        style={{
+          maxWidth: '99%',
+          display: 'flex',
+          justifyContent: 'space-between',
+          height: 250,
+          margin: 'auto',
+          textAlign: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <img
+          src={singleAlbum.album.cover_medium}
+          alt={singleAlbum.album.title}
+        />
         <CardContent sx={{ minWidth: 150 }}>
-          <Typography sx={{ fontSize: 26 }} color="text.secondary" gutterBottom>
+          <Typography style={{ fontSize: 22, lineHeight: 2 }} gutterBottom>
             {singleAlbum.album.artist.name}
           </Typography>
-          <Typography variant="h3" component="div">
+          <Typography style={{ fontSize: 22 }}>
             {singleAlbum.album.title}
           </Typography>
-          <Typography sx={{ mb: 1.5 }} color="text.secondary">
+          <Typography style={{ fontSize: 14 }}>
             Nombre de titres : {singleAlbum.album.nb_tracks}
           </Typography>
-          <Typography variant="body2">
+          <Typography variant="body2" style={{ fontSize: 14 }}>
             Durée : {Math.floor(singleAlbum.album.duration / 60)}min
             <br />
             Abonnés {singleAlbum.album.fans}
           </Typography>
-          <CardActions>
-            <Button size="small">
-              {singleAlbum.album.genres.data[0].name}
-            </Button>
-          </CardActions>
         </CardContent>
-      </Card>
+        <CardActions>
+          <Button size="large">{singleAlbum.album.genres.data[0].name}</Button>
+        </CardActions>
+      </Paper>
+      <Box sx={{ height: 8 }} />
       <Paper square elevation={5} style={{ maxWidth: '99%', margin: 'auto' }}>
         <table>
           <thead>
