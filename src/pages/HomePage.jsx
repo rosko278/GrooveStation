@@ -8,10 +8,10 @@ import './pages.css';
 function HomePage() {
   return (
     <div>
+      <ChartTracks />
       <h1>Homepage</h1>
       <PopularSongElement />
       <Lecteur />
-      <ChartTracks />
       <FluxRssMusicNews />
     </div>
   );

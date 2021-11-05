@@ -1,8 +1,9 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
+/* import Card from '@mui/material/Card'; */
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import { Paper } from '@material-ui/core';
 import { CardActionArea } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { Link } from 'react-router-dom';
@@ -21,7 +22,7 @@ export default function CardAlbum() {
     <Grid container spacing={5}>
       {chartAlbum.top.map((album) => (
         <Grid item xs={12} md={3}>
-          <Card
+          <Paper
             sx={{
               maxWidth: '100%',
               display: 'flex',
@@ -37,15 +38,15 @@ export default function CardAlbum() {
                 />
               </Link>
               <CardContent>
-                <Typography gutterBottom variant="h8" component="div">
+                <Typography gutterBottom variant="h5" component="div">
                   {album.title}
                 </Typography>
-                <Typography gutterBottom variant="h9" component="div">
+                <Typography gutterBottom variant="h6" component="div">
                   {album.artist.name}
                 </Typography>
               </CardContent>
             </CardActionArea>
-          </Card>
+          </Paper>
         </Grid>
       ))}
     </Grid>

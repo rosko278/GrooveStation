@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import SwitchUI from '@material-ui/core/Switch';
 import { AppBar, Avatar, Toolbar, Typography } from '@material-ui/core';
@@ -149,6 +149,9 @@ export default function PrimarySearchAppBar() {
     </Menu>
   );
 
+  const [search, setSearch] = useState('');
+  useEffect(() => {}, [search]);
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -162,6 +165,8 @@ export default function PrimarySearchAppBar() {
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
             />
           </Search>
           <Box sx={{ flexGrow: 1 }} />

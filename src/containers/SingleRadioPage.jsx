@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
+import { Paper } from '@material-ui/core';
 import { apiGetSingleRadio } from '../api/apiSingleRadio';
 import PlayButton from '../components/PlayButton';
 import convertDuration from '../core/functions/convertDuration';
@@ -27,7 +28,7 @@ function SingleRadioPage(props) {
   }
 
   return (
-    <div>
+    <Paper square elevation={5} style={{ maxWidth: '99%', margin: 'auto' }}>
       <table>
         <thead>
           <tr>
@@ -65,7 +66,7 @@ function SingleRadioPage(props) {
           ))}
         </tbody>
       </table>
-    </div>
+    </Paper>
   );
 }
 
