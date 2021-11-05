@@ -10,8 +10,6 @@ function ArtistsPage() {
       <Working />
       <div className="test">
         <CardArtist />
-        <CardArtist />
-        <CardArtist />
       </div>
     </div>
   );

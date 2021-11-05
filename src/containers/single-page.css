@@ -6,7 +6,7 @@
 table {
   display: table;
   width: 100%;
-  border-spacing: 2px;
+  border-collapse: collapse;
 }
 
 th {
@@ -14,6 +14,8 @@ th {
   display: table-cell;
   vertical-align: middle;
   font-size: 1.4em;
+  padding: 0.5em;
+  border-bottom: solid 1.5px #b8b8b8;
 }
 
 tr {
@@ -24,4 +26,6 @@ tr {
 td {
   position: relative;
   height: 40px;
+  padding: 0.5em;
+  border-bottom: solid 0.5px #b8b8b8;
 }

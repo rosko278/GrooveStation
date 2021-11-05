@@ -15,7 +15,9 @@ import radioReducer from './radio/radioReducer';
 import singleRadioReducer from './singleRadio/singleRadioReducer';
 import rssReducer from './fluxRSSmusicNews/rssReducer';
 import genderReducer from './gender/genderReducer';
-
+import searchAlbumReducer from './search/searchAlbum/searchAlbumReducer';
+import searchArtistReducer from './search/searchArtist/searchArtistReducer';
+import searchTrackReducer from './search/searchTrack/searchTrackReducer';
 /**
  * Creates root reducer which contains all reducers
  */
@@ -27,6 +29,9 @@ const rootReducer = combineReducers({
   singleRadio: singleRadioReducer,
   fluxRss: rssReducer,
   gender: genderReducer,
+  searchArtist: searchAlbumReducer,
+  searchAlbum: searchArtistReducer,
+  searchTrack: searchTrackReducer,
 });
 
 /**

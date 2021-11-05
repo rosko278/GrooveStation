@@ -5,8 +5,8 @@ import MobileStepper from '@mui/material/MobileStepper';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 /**
@@ -63,52 +63,59 @@ function ChartTracks() {
 
     if (maxSteps !== 0) {
       displayedTracks = (
-        <Typography>{`${chartTracks.top[activeStep].artist.name} - ${chartTracks.top[activeStep].title}`}</Typography>
+        <Typography
+          sx={{
+            fontSize: '3vw',
+            fontStyle: 'inherit',
+            lineHeight: 1.5,
+          }}
+        >
+          <strong>{chartTracks.top[activeStep].artist.name}</strong> <br />
+          {chartTracks.top[activeStep].title}
+        </Typography>
       );
 
       displayedImage = chartTracks.top.slice(0, maxSteps).map((step, index) => (
-        <div key={step.id}>
+        <Box sx={{ background: 'inherit', maxWidth: '80%' }} key={step.id}>
           {Math.abs(activeStep - index) <= 2 ? (
-            <Box
+            <Paper
+              square
+              elevation={5}
               component="img"
               sx={{
-                height: 255,
-                display: 'block',
-                maxWidth: 400,
+                height: 300,
                 overflow: 'hidden',
-                width: '100%',
+                minWidth: 250,
+                width: '70%',
               }}
-              src={step.album.cover_big}
+              src={step.album.cover_xl}
               alt={step.title}
             />
           ) : null}
-        </div>
+        </Box>
       ));
     }
     display = (
-      <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
-        <Paper
-          square
-          elevation={0}
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            height: 50,
-            pl: 2,
-            bgcolor: 'background.default',
-          }}
-        >
-          {displayedTracks}
-        </Paper>
-        <AutoPlaySwipeableViews
-          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-          index={activeStep}
-          onChangeIndex={handleStepChange}
-          enableMouseEvents
-        >
-          {displayedImage}
-        </AutoPlaySwipeableViews>
+      <Box
+        sx={{
+          width: '100%',
+          minWidth: 300,
+          flexGrow: 1,
+          display: 'flex',
+          flexDirection: 'row',
+          backgroundColor: 'inherit',
+          marginTop: 1,
+        }}
+      >
         <MobileStepper
+          sx={{
+            background: 'inherit',
+            display: 'flex',
+            flexDirection: 'column',
+            height: 290,
+            width: '5%',
+            minWidth: '40px',
+          }}
           steps={maxSteps}
           position="static"
           activeStep={activeStep}
@@ -118,11 +125,10 @@ function ChartTracks() {
               onClick={handleNext}
               disabled={activeStep === maxSteps - 1}
             >
-              Next
               {theme.direction === 'rtl' ? (
-                <KeyboardArrowLeft />
+                <KeyboardArrowUpIcon />
               ) : (
-                <KeyboardArrowRight />
+                <KeyboardArrowDownIcon />
               )}
             </Button>
           }
@@ -133,14 +139,39 @@ function ChartTracks() {
               disabled={activeStep === 0}
             >
               {theme.direction === 'rtl' ? (
-                <KeyboardArrowRight />
+                <KeyboardArrowDownIcon />
               ) : (
-                <KeyboardArrowLeft />
+                <KeyboardArrowUpIcon />
               )}
-              Back
             </Button>
           }
         />
+        <AutoPlaySwipeableViews
+          axis={theme.direction === 'rtl' ? 'x' : 'x-reverse'}
+          index={activeStep}
+          onChangeIndex={handleStepChange}
+          enableMouseEvents
+        >
+          {displayedImage}
+        </AutoPlaySwipeableViews>
+        <Paper
+          square
+          elevation={5}
+          sx={{
+            display: 'flex',
+            justifyContent: 'flex-start',
+            alignItems: 'center',
+            height: 300,
+            p: 4,
+            background: '#e84280',
+            color: 'inherit',
+            width: '35%',
+            minWidth: 120,
+            textAlign: 'left',
+          }}
+        >
+          {displayedTracks}
+        </Paper>
       </Box>
     );
   }

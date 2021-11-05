@@ -4,6 +4,7 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
+import { Paper } from '@material-ui/core';
 import Typography from '@mui/material/Typography';
 import { PropTypes } from 'prop-types';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
@@ -34,9 +35,9 @@ function SingleAlbumPage(props) {
 
   return (
     <div>
-      <Card sx={{ minWidth: 275, display: 'flex', height: 300 }}>
+      <Card sx={{ minWidth: 200, display: 'flex', height: 350, margin: 1 }}>
         <img src={singleAlbum.album.cover_big} alt={singleAlbum.album.title} />
-        <CardContent>
+        <CardContent sx={{ minWidth: 150 }}>
           <Typography sx={{ fontSize: 26 }} color="text.secondary" gutterBottom>
             {singleAlbum.album.artist.name}
           </Typography>
@@ -58,34 +59,36 @@ function SingleAlbumPage(props) {
           </CardActions>
         </CardContent>
       </Card>
-
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Titre</th>
-            <th>Durée</th>
-          </tr>
-        </thead>
-        <tbody>
-          {singleAlbum.album.tracks.data.map((content, index) => (
-            <tr key={singleAlbum.album.id}>
-              <td>{index + 1}</td>
-              <td>
-                <p>{content.title}</p>
-              </td>
-              <td>{convertDuration(content.duration)}</td>
-              <td>
-                <ListItemAvatar>
-                  <Avatar>
-                    <PlayButton url={content.preview} />
-                  </Avatar>
-                </ListItemAvatar>
-              </td>
+      <Paper square elevation={5} style={{ maxWidth: '99%', margin: 'auto' }}>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Titre</th>
+              <th>Durée</th>
+              <th>Aperçu</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {singleAlbum.album.tracks.data.map((content, index) => (
+              <tr key={singleAlbum.album.id}>
+                <td>{index + 1}</td>
+                <td>
+                  <p>{content.title}</p>
+                </td>
+                <td>{convertDuration(content.duration)}</td>
+                <td>
+                  <ListItemAvatar>
+                    <Avatar>
+                      <PlayButton url={content.preview} />
+                    </Avatar>
+                  </ListItemAvatar>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </Paper>
     </div>
   );
 }

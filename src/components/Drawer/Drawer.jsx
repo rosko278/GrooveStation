@@ -93,7 +93,7 @@ export default function SwipeableTemporaryDrawer() {
             </ListItemIcon>
           </ListItem>
         ))}
-        {['Genre', 'Playlist'].map((text, index) => (
+        {['Genre', 'Radio'].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>
               {index % 2 === 0 ? (
