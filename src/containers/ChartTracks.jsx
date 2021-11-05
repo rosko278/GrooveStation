@@ -122,6 +122,7 @@ function ChartTracks() {
           nextButton={
             <Button
               size="small"
+              sx={{ color: '#607d8b' }}
               onClick={handleNext}
               disabled={activeStep === maxSteps - 1}
             >
@@ -135,6 +136,7 @@ function ChartTracks() {
           backButton={
             <Button
               size="small"
+              sx={{ color: '#607d8b' }}
               onClick={handleBack}
               disabled={activeStep === 0}
             >
@@ -163,7 +165,7 @@ function ChartTracks() {
             alignItems: 'center',
             height: 300,
             p: 4,
-            background: '#e84280',
+            background: 'inherit',
             color: 'inherit',
             width: '35%',
             minWidth: 120,

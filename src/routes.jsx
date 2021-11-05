@@ -20,7 +20,6 @@ export default function Routage() {
         <Route exact path="/album/:id" component={SingleAlbumPage} />
         <Route exact path="/library/:id" component={SingleRadioPage} />
       </Switch>
-      ;
     </>
   );
 }
