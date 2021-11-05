@@ -1,11 +1,12 @@
-import RemoveMe from './components/RemoveMe';
+import React from 'react';
+import AppBar from './components/AppBar';
+import Routage from './routes';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <RemoveMe />
+    <div>
+      <AppBar />
+      <Routage />
     </div>
   );
 }
-
-export default App;
