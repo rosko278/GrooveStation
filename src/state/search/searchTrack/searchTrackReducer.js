@@ -11,8 +11,6 @@ const searchTrackReducer = (state = initialStateSearchTrack, action) => {
     return {
       ...state,
       isLoading: true,
-      trackFound: [],
-      error: '',
     };
   }
   if (action.type === searchTrackTypes.LOAD_SEARCH_TRACK_SUCCESS) {
@@ -20,15 +18,16 @@ const searchTrackReducer = (state = initialStateSearchTrack, action) => {
       ...state,
       isLoading: false,
       trackFound: action.payload,
-      error: '',
     };
   }
-  return {
-    ...state,
-    isLoading: false,
-    trackFound: [],
-    error: action.payload,
-  };
+  if (action.type === searchTrackTypes.LOAD_SEARCH_TRACK_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      error: action.payload,
+    };
+  }
+  return state;
 };
 
 export default searchTrackReducer;

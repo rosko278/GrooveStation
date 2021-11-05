@@ -11,8 +11,6 @@ const searchAlbumReducer = (state = initialStateSearchAlbum, action) => {
     return {
       ...state,
       isLoading: true,
-      albumFound: [],
-      error: '',
     };
   }
   if (action.type === searchAlbumTypes.LOAD_SEARCH_ALBUM_SUCCESS) {
@@ -20,15 +18,17 @@ const searchAlbumReducer = (state = initialStateSearchAlbum, action) => {
       ...state,
       isLoading: false,
       albumFound: action.payload,
-      error: '',
     };
   }
-  return {
-    ...state,
-    isLoading: false,
-    albumFound: [],
-    error: action.payload,
-  };
+
+  if (action.type === searchAlbumTypes.LOAD_SEARCH_ALBUM_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      error: action.payload,
+    };
+  }
+  return state;
 };
 
 export default searchAlbumReducer;

@@ -11,8 +11,6 @@ const singleRadioReducer = (state = initialStateSingleRadio, action) => {
     return {
       ...state,
       isLoading: true,
-      station: [],
-      error: '',
     };
   }
   if (action.type === singleRadioTypes.LOAD_SINGLE_RADIO_SUCCESS) {
@@ -20,15 +18,17 @@ const singleRadioReducer = (state = initialStateSingleRadio, action) => {
       ...state,
       isLoading: false,
       station: action.payload,
-      error: '',
     };
   }
-  return {
-    ...state,
-    isLoading: false,
-    station: [],
-    error: action.payload,
-  };
+
+  if (action.type === singleRadioTypes.LOAD_SINGLE_RADIO_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      error: action.payload,
+    };
+  }
+  return state;
 };
 
 export default singleRadioReducer;

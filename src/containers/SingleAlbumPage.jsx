@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+
 /* import Card from '@mui/material/Card'; */
 import { Box } from '@mui/system';
 import CardActions from '@mui/material/CardActions';
@@ -7,7 +9,6 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import { Paper } from '@material-ui/core';
 import Typography from '@mui/material/Typography';
-import { PropTypes } from 'prop-types';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import PlayButton from '../components/PlayButton';
@@ -17,14 +18,13 @@ import Loading from '../components/Loading';
 import ErrorMessage from '../components/ErrorMessage';
 import './single-page.css';
 
-function SingleAlbumPage(props) {
+function SingleAlbumPage() {
   const dispatch = useDispatch();
   const singleAlbum = useSelector((state) => state.singleAlbum);
-
-  const { match } = props;
+  const { id } = useParams();
 
   React.useEffect(() => {
-    dispatch(apiGetSingleAlbum(match.params.id));
+    dispatch(apiGetSingleAlbum(id));
   }, [dispatch]);
 
   if (singleAlbum.isLoading) {
@@ -107,9 +107,5 @@ function SingleAlbumPage(props) {
     </div>
   );
 }
-
-SingleAlbumPage.propTypes = {
-  match: PropTypes.node.isRequired,
-};
 
 export default SingleAlbumPage;

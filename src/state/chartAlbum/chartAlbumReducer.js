@@ -11,8 +11,6 @@ const chartAlbumReducer = (state = initialStateChartAlbum, action) => {
     return {
       ...state,
       isLoading: true,
-      top: [],
-      error: '',
     };
   }
   if (action.type === chartAlbumTypes.LOAD_CHART_ALBUM_SUCCESS) {
@@ -20,15 +18,16 @@ const chartAlbumReducer = (state = initialStateChartAlbum, action) => {
       ...state,
       isLoading: false,
       top: action.payload,
-      error: '',
     };
   }
-  return {
-    ...state,
-    isLoading: false,
-    top: [],
-    error: action.payload,
-  };
+  if (action.type === chartAlbumTypes.LOAD_CHART_ALBUM_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      error: action.payload,
+    };
+  }
+  return state;
 };
 
 export default chartAlbumReducer;

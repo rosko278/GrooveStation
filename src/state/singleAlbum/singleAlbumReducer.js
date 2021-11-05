@@ -11,8 +11,6 @@ const singleAlbumReducer = (state = initialStateSingleAlbum, action) => {
     return {
       ...state,
       isLoading: true,
-      album: [],
-      error: '',
     };
   }
   if (action.type === singleAlbumTypes.LOAD_SINGLE_ALBUM_SUCCESS) {
@@ -20,15 +18,16 @@ const singleAlbumReducer = (state = initialStateSingleAlbum, action) => {
       ...state,
       isLoading: false,
       album: action.payload,
-      error: '',
     };
   }
-  return {
-    ...state,
-    isLoading: false,
-    album: [],
-    error: action.payload,
-  };
+  if (action.type === singleAlbumTypes.LOAD_SINGLE_ALBUM_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      error: action.payload,
+    };
+  }
+  return state;
 };
 
 export default singleAlbumReducer;

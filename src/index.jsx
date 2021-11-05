@@ -9,13 +9,13 @@ import store from './state/store';
 
 ReactDOM.render(
   <CustomThemeProvider>
-    <Router>
-      <CssBaseline>
-        <Provider store={store}>
+    <CssBaseline>
+      <Provider store={store}>
+        <Router>
           <App />
-        </Provider>
-      </CssBaseline>
-    </Router>
+        </Router>
+      </Provider>
+    </CssBaseline>
   </CustomThemeProvider>,
 
   document.querySelector('#root')
