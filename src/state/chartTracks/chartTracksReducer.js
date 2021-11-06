@@ -22,8 +22,6 @@ const chartTracksReducer = (state = initialStateChartTracks, action) => {
     return {
       ...state,
       isLoading: true,
-      top: [],
-      error: '',
     };
   }
   if (action.type === chartTracksTypes.LOAD_CHART_TRACKS_SUCCESS) {
@@ -31,15 +29,16 @@ const chartTracksReducer = (state = initialStateChartTracks, action) => {
       ...state,
       isLoading: false,
       top: action.payload,
-      error: '',
     };
   }
-  return {
-    ...state,
-    isLoading: false,
-    top: [],
-    error: action.payload,
-  };
+  if (action.type === chartTracksTypes.LOAD_CHART_TRACKS_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      error: action.payload,
+    };
+  }
+  return state;
 };
 
 export default chartTracksReducer;

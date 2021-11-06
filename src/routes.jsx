@@ -5,8 +5,8 @@ import HomePage from './pages/HomePage';
 import AlbumPage from './pages/AlbumPage';
 import GenderPage from './pages/GenderPage';
 import LibraryPage from './pages/LibraryPage';
-import SingleAlbumPage from './containers/SingleAlbumPage';
-import SingleRadioPage from './containers/SingleRadioPage';
+import SingleAlbumPage from './pages/SingleAlbumPage/SingleAlbumPage';
+import SingleRadioPage from './pages/SingleRadioPage';
 
 export default function Routage() {
   return (

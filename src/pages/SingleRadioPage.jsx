@@ -20,10 +20,13 @@ function SingleRadioPage(props) {
     dispatch(apiGetSingleRadio(match.params.id));
   }, [dispatch]);
 
-  if (singleRadio.isLoading) {
+  if (
+    singleRadio.isLoading ||
+    Object.entries(singleRadio.station).length === 0
+  ) {
     return <Loading />;
   }
-  if (singleRadio.error) {
+  if (singleRadio.error || Object.entries(singleRadio.station).length === 0) {
     return <Error errorMsg="Impossible de charger la radio' !" />;
   }
 

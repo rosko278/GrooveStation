@@ -11,8 +11,6 @@ const searchArtistReducer = (state = initialStateSearchArtist, action) => {
     return {
       ...state,
       isLoading: true,
-      artistFound: [],
-      error: '',
     };
   }
   if (action.type === searchArtistTypes.LOAD_SEARCH_ARTIST_SUCCESS) {
@@ -20,15 +18,16 @@ const searchArtistReducer = (state = initialStateSearchArtist, action) => {
       ...state,
       isLoading: false,
       artistFound: action.payload,
-      error: '',
     };
   }
-  return {
-    ...state,
-    isLoading: false,
-    artistFound: [],
-    error: action.payload,
-  };
+  if (action.type === searchArtistTypes.LOAD_SEARCH_ARTIST_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      error: action.payload,
+    };
+  }
+  return state;
 };
 
 export default searchArtistReducer;

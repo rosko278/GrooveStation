@@ -1,36 +1,36 @@
-import * as React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-/* import Card from '@mui/material/Card'; */
+import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 import { Box } from '@mui/system';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import { Paper } from '@material-ui/core';
 import Typography from '@mui/material/Typography';
-import { PropTypes } from 'prop-types';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import PlayButton from '../components/PlayButton';
-import convertDuration from '../core/functions/convertDuration';
-import { apiGetSingleAlbum } from '../api/apiSingleAlbum';
-import Loading from '../components/Loading';
-import ErrorMessage from '../components/ErrorMessage';
-import './single-page.css';
+import PlayButton from '../../components/PlayButton';
+import convertDuration from '../../core/functions/convertDuration';
+import './SingleAlbumPage.css';
+import Loading from '../../components/Loading';
+import ErrorMessage from '../../components/ErrorMessage';
+
+import { apiGetSingleAlbum } from '../../api/apiSingleAlbum';
 
 function SingleAlbumPage(props) {
+  const { match } = props;
   const dispatch = useDispatch();
   const singleAlbum = useSelector((state) => state.singleAlbum);
 
-  const { match } = props;
-
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(apiGetSingleAlbum(match.params.id));
   }, [dispatch]);
 
-  if (singleAlbum.isLoading) {
+  if (singleAlbum.isLoading || Object.entries(singleAlbum.album).length === 0) {
     return <Loading />;
   }
-  if (singleAlbum.error) {
+
+  if (singleAlbum.error || Object.entries(singleAlbum.album).length === 0) {
     return <ErrorMessage errorMsg="Impossible de charger l'album' !" />;
   }
 

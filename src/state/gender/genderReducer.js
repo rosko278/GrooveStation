@@ -22,8 +22,6 @@ const genderReducer = (state = initialStateGender, action) => {
     return {
       ...state,
       isLoading: true,
-      gender: [],
-      error: '',
     };
   }
   if (action.type === genderTypes.LOAD_GENDER_SUCCESS) {
@@ -31,15 +29,16 @@ const genderReducer = (state = initialStateGender, action) => {
       ...state,
       isLoading: false,
       gender: action.payload,
-      error: '',
     };
   }
-  return {
-    ...state,
-    isLoading: false,
-    gender: [],
-    error: action.payload,
-  };
+  if (action.type === genderTypes.LOAD_GENDER_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      error: action.payload,
+    };
+  }
+  return state;
 };
 
 export default genderReducer;
