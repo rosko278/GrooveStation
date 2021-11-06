@@ -2,7 +2,7 @@ import singleAlbumTypes from './singleAlbumTypes';
 
 const initialStateSingleAlbum = {
   isLoading: false,
-  album: [],
+  album: {},
   error: '',
 };
 

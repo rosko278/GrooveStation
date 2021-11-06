@@ -15,7 +15,9 @@ export const apiGetSingleAlbum = (id) => {
         dispatch(singleAlbumSuccess(res.data));
         return res;
       })
-      .catch((error) => dispatch(singleAlbumError(error)));
+      .catch((error) => {
+        dispatch(singleAlbumError(error));
+      });
   };
 };
 

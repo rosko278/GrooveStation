@@ -2,7 +2,7 @@ import singleRadioTypes from './singleRadioTypes';
 
 const initialStateSingleRadio = {
   isLoading: false,
-  station: [],
+  station: {},
   error: '',
 };
 
