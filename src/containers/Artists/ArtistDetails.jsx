@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
 import { useTheme } from '@mui/material/styles';
@@ -7,6 +7,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+// import { useParams } from 'react-router-dom';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -39,6 +40,7 @@ function a11yProps(index) {
 }
 
 export default function ArtistDetails() {
+  // const id = useParams();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
@@ -54,7 +56,7 @@ export default function ArtistDetails() {
     <Box
       sx={{
         bgcolor: 'background.paper',
-        width: 500,
+        width: '100%',
         minHeight: 200,
       }}
     >
@@ -68,9 +70,9 @@ export default function ArtistDetails() {
           aria-label="action tabs example"
           centered
         >
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+          <Tab label="Morceaux populaires" {...a11yProps(0)} />
+          <Tab label="Albums" {...a11yProps(1)} />
+          <Tab label="Apparait dans" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <SwipeableViews
@@ -79,13 +81,13 @@ export default function ArtistDetails() {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-          Item One
+          Morceaux populaires
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          Item Two
+          Albums
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
-          Item Three
+          Apparait dans
         </TabPanel>
       </SwipeableViews>
     </Box>

@@ -13,6 +13,7 @@ import CardActions from '@mui/material/CardActions';
 import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Grid } from '@mui/material';
+import { Link } from 'react-router-dom';
 import Error from '../../components/ErrorMessage';
 import Loading from '../../components/Loading';
 import apiChartArtists from '../../api/apiChartArtists';
@@ -38,12 +39,14 @@ function ArtistsCard() {
         <Grid item xs={6} md={4} lg={3}>
           <Card sx={{ maxWidth: 250 }}>
             <CardHeader title={artist.name} />
-            <CardMedia
-              component="img"
-              height="250"
-              image={artist.picture_medium}
-              alt={artist.name}
-            />
+            <Link to={`/artist/${artist.id}`}>
+              <CardMedia
+                component="img"
+                height="250"
+                image={artist.picture_medium}
+                alt={artist.name}
+              />
+            </Link>
 
             <CardActions disableSpacing>
               <IconButton aria-label="add to favorites">
