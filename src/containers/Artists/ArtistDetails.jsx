@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
 import { useTheme } from '@mui/material/styles';
@@ -7,7 +7,15 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
+// Redux
+import { useSelector, useDispatch } from 'react-redux';
+import apiArtistInfos from '../../api/apiArtist';
+
+// alerts
+import Loading from '../../components/Loading';
+import Error from '../../components/ErrorMessage';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -39,8 +47,10 @@ function a11yProps(index) {
   };
 }
 
-export default function ArtistDetails() {
-  // const id = useParams();
+function ArtistDetails() {
+  const artist = useSelector((state) => state.artist);
+  const dispatch = useDispatch();
+  const { id } = useParams();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
@@ -52,44 +62,66 @@ export default function ArtistDetails() {
     setValue(index);
   };
 
+  useEffect(() => {
+    dispatch(apiArtistInfos(id));
+  }, [dispatch]);
+
+  if (artist.isLoading) {
+    return <Loading />;
+  }
+
+  if (artist.error) {
+    return <Error errorMsg="Impossible de charger les données de l'artiste" />;
+  }
   return (
-    <Box
-      sx={{
-        bgcolor: 'background.paper',
-        width: '100%',
-        minHeight: 200,
-      }}
-    >
-      <AppBar position="static" color="default">
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor="primary"
-          textColor="primary"
-          variant="fullWidth"
-          aria-label="action tabs example"
-          centered
-        >
-          <Tab label="Morceaux populaires" {...a11yProps(0)} />
-          <Tab label="Albums" {...a11yProps(1)} />
-          <Tab label="Apparait dans" {...a11yProps(2)} />
-        </Tabs>
-      </AppBar>
-      <SwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-        index={value}
-        onChangeIndex={handleChangeIndex}
+    <>
+      <Box
+        sx={{
+          height: '500px',
+          background: `url('${artist.info.picture_big}') no-repeat center fixed`,
+          backgroundSize: 'cover',
+        }}
+      />
+      <Box
+        sx={{
+          bgcolor: 'background.paper',
+          width: '100%',
+          minHeight: 200,
+        }}
       >
-        <TabPanel value={value} index={0} dir={theme.direction}>
-          Morceaux populaires
-        </TabPanel>
-        <TabPanel value={value} index={1} dir={theme.direction}>
-          Albums
-        </TabPanel>
-        <TabPanel value={value} index={2} dir={theme.direction}>
-          Apparait dans
-        </TabPanel>
-      </SwipeableViews>
-    </Box>
+        <AppBar position="static" color="default">
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            indicatorColor="primary"
+            textColor="primary"
+            variant="fullWidth"
+            aria-label="action tabs example"
+            centered
+          >
+            <Tab label="Morceaux populaires" {...a11yProps(0)} />
+            <Tab label="Albums" {...a11yProps(1)} />
+            <Tab label="Apparait dans" {...a11yProps(2)} />
+          </Tabs>
+        </AppBar>
+        <SwipeableViews
+          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+          index={value}
+          onChangeIndex={handleChangeIndex}
+        >
+          <TabPanel value={value} index={0} dir={theme.direction}>
+            Morceaux populaires
+          </TabPanel>
+          <TabPanel value={value} index={1} dir={theme.direction}>
+            Albums
+          </TabPanel>
+          <TabPanel value={value} index={2} dir={theme.direction}>
+            Apparait dans
+          </TabPanel>
+        </SwipeableViews>
+      </Box>
+    </>
   );
 }
+
+export default ArtistDetails;
