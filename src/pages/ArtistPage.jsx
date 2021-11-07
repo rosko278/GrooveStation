@@ -1,16 +1,12 @@
+import { Typography } from '@mui/material';
 import React from 'react';
-import Working from '../components/onProgress/Working';
-import CardArtist from '../components/CardArtist';
-import './pages.css';
+import ArtistsCard from '../containers/Artists/ArtistsCard';
 
 function ArtistsPage() {
   return (
     <div>
-      <h1>Artists Page</h1>
-      <Working />
-      <div className="test">
-        <CardArtist />
-      </div>
+      <Typography variant="h1">Artists</Typography>
+      <ArtistsCard />
     </div>
   );
 }
