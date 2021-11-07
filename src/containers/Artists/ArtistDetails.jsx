@@ -16,6 +16,7 @@ import apiArtistInfos from '../../api/apiArtist';
 // alerts
 import Loading from '../../components/Loading';
 import Error from '../../components/ErrorMessage';
+import ArtistTopTracks from './ArtistTopTracks';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -78,7 +79,7 @@ function ArtistDetails() {
       <Box
         sx={{
           height: '500px',
-          background: `url('${artist.info.picture_big}') no-repeat center fixed`,
+          background: `url('${artist.info.picture_xl}') no-repeat center`,
           backgroundSize: 'cover',
         }}
       />
@@ -110,7 +111,7 @@ function ArtistDetails() {
           onChangeIndex={handleChangeIndex}
         >
           <TabPanel value={value} index={0} dir={theme.direction}>
-            Morceaux populaires
+            <ArtistTopTracks />
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
             Albums
