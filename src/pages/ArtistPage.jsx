@@ -5,7 +5,7 @@ import ArtistsCard from '../containers/Artists/ArtistsCard';
 function ArtistsPage() {
   return (
     <div>
-      <Typography variant="h1">Artists</Typography>
+      <Typography variant="h2">Liste des artistes</Typography>
       <ArtistsCard />
     </div>
   );
