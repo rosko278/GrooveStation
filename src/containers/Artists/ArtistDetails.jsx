@@ -16,7 +16,10 @@ import apiArtistInfos from '../../api/apiArtist';
 // alerts
 import Loading from '../../components/Loading';
 import Error from '../../components/ErrorMessage';
+
+// containers
 import ArtistTopTracks from './ArtistTopTracks';
+import ArtistAlbums from './ArtistAlbums';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -114,7 +117,7 @@ function ArtistDetails() {
             <ArtistTopTracks />
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
-            Albums
+            <ArtistAlbums />
           </TabPanel>
           <TabPanel value={value} index={2} dir={theme.direction}>
             Apparait dans

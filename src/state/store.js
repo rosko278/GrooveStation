@@ -23,6 +23,7 @@ import searchTrackReducer from './search/searchTrack/searchTrackReducer';
 import chartArtistsReducer from './chartArtists/chartArtistsReducer';
 import artistTopTracksReducer from './artistTopTracks/artistTopTracksReducer';
 import artistReducer from './artist/artistReducer';
+import artistAlbumsReducer from './artistAlbums/artistAlbumsReducer';
 /**
  * Creates root reducer which contains all reducers
  */
@@ -40,6 +41,7 @@ const rootReducer = combineReducers({
   chartArtists: chartArtistsReducer,
   artist: artistReducer,
   artistTopTracks: artistTopTracksReducer,
+  artistAlbums: artistAlbumsReducer,
 });
 
 /**
