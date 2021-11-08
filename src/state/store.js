@@ -20,6 +20,10 @@ import genderReducer from './gender/genderReducer';
 import searchAlbumReducer from './search/searchAlbum/searchAlbumReducer';
 import searchArtistReducer from './search/searchArtist/searchArtistReducer';
 import searchTrackReducer from './search/searchTrack/searchTrackReducer';
+import chartArtistsReducer from './chartArtists/chartArtistsReducer';
+import artistTopTracksReducer from './artistTopTracks/artistTopTracksReducer';
+import artistReducer from './artist/artistReducer';
+import artistAlbumsReducer from './artistAlbums/artistAlbumsReducer';
 /**
  * Creates root reducer which contains all reducers
  */
@@ -34,6 +38,10 @@ const rootReducer = combineReducers({
   searchArtist: searchAlbumReducer,
   searchAlbum: searchArtistReducer,
   searchTrack: searchTrackReducer,
+  chartArtists: chartArtistsReducer,
+  artist: artistReducer,
+  artistTopTracks: artistTopTracksReducer,
+  artistAlbums: artistAlbumsReducer,
 });
 
 /**
