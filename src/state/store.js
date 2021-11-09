@@ -31,8 +31,8 @@ const rootReducer = combineReducers({
   singleRadio: singleRadioReducer,
   fluxRss: rssReducer,
   gender: genderReducer,
-  searchArtist: searchAlbumReducer,
-  searchAlbum: searchArtistReducer,
+  searchAlbum: searchAlbumReducer,
+  searchArtist: searchArtistReducer,
   searchTrack: searchTrackReducer,
 });
 

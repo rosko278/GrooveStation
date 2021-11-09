@@ -18,7 +18,10 @@ import HomeIcon from '@mui/icons-material/Home';
 import MenuIcon from '@mui/icons-material/Menu';
 import { NavLink } from 'react-router-dom';
 import DeezerLogo from './DeezerLogo';
-import AvatarYo from './AvatarYo.png';
+import AvatarYo from './images/AvatarYo.png';
+import AvatarTheo from './images/AvatarTheo.png';
+import AvatarJimmy from './images/AvatarJimmy.png';
+import AvatarGael from './images/AvatarGael.png';
 
 export default function SwipeableTemporaryDrawer() {
   const [state, setState] = React.useState({
@@ -139,7 +142,7 @@ export default function SwipeableTemporaryDrawer() {
           </ListItem>
         ))}
       </List>
-      <Divider sx={{ height: 50 }} />
+      <Divider sx={{ height: 10 }} />
       <Paper sx={{ height: '7rem' }} />
       <ListItem>
         <ListItemIcon>
@@ -153,7 +156,7 @@ export default function SwipeableTemporaryDrawer() {
         <ListItem>
           <ListItemIcon>
             <a href="https://www.linkedin.com/in/ga%C3%ABl-aury-%F0%9F%91%A8%E2%80%8D%F0%9F%92%BB-d%C3%A9veloppeur-web-junior-06749b21b?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BxSsUkC1bTjW01HibxQLt3Q%3D%3D">
-              <Avatar src={AvatarYo} sx={{ mr: 2 }} />
+              <Avatar src={AvatarGael} sx={{ mr: 2 }} />
             </a>
             <Typography variant="h7" style={{ color: '#607d8b' }}>
               Gael
@@ -163,7 +166,7 @@ export default function SwipeableTemporaryDrawer() {
         <ListItem>
           <ListItemIcon>
             <a href="https://www.linkedin.com/in/jimmyjung67?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BA2nx25p5SLuLbVkCBvxHpA%3D%3D">
-              <Avatar src={AvatarYo} sx={{ mr: 2 }} />
+              <Avatar src={AvatarJimmy} sx={{ mr: 2 }} />
             </a>
             <Typography variant="h7" style={{ color: '#607d8b' }}>
               Jimmy
@@ -173,7 +176,7 @@ export default function SwipeableTemporaryDrawer() {
         <ListItem>
           <ListItemIcon>
             <a href="https://www.linkedin.com/in/th%C3%A9o-muller-6b39761b8/">
-              <Avatar src={AvatarYo} sx={{ mr: 2 }} />
+              <Avatar src={AvatarTheo} sx={{ mr: 2 }} />
             </a>
             <Typography variant="h7" style={{ color: '#607d8b' }}>
               Theo

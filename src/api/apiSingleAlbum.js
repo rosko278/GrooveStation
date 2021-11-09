@@ -6,7 +6,6 @@ import {
 import { axiosApiMusic } from '../core/functions/apiHelper';
 
 export const apiGetSingleAlbum = (id) => {
-  // (id)
   return (dispatch) => {
     dispatch(singleAlbumLoading());
     axiosApiMusic

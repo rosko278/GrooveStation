@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import SwitchUI from '@material-ui/core/Switch';
 import { AppBar, Avatar, Toolbar, Typography } from '@material-ui/core';
@@ -15,6 +15,9 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { CustomThemeContext } from '../theme/CustomThemeProvider';
 import Drawer from './Drawer/Drawer';
+import SearchResult from './SearchResult/SearchResult';
+/* import { apiGetSearchArtist } from '../api/apiSearchArtist';
+import { apiGetSearchTrack } from '../api/apiSearchTrack'; */
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -150,7 +153,11 @@ export default function PrimarySearchAppBar() {
   );
 
   const [search, setSearch] = useState('');
-  useEffect(() => {}, [search]);
+
+  const handleSearch = (e) => {
+    const result = e.target.value;
+    setSearch(result);
+  };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -166,8 +173,9 @@ export default function PrimarySearchAppBar() {
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
               value={search}
-              onChange={(event) => setSearch(event.target.value)}
+              onChange={handleSearch}
             />
+            {search && <SearchResult search={search} />}
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <FormControlLabel
