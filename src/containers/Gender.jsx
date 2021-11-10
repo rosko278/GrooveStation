@@ -94,6 +94,7 @@ export default function ButtonGenre() {
         minWidth: 300,
         width: '100%',
         gap: '20px',
+        justifyContent: 'space-around',
       }}
     >
       {genres.gender.slice(1, genres.gender.length).map((genre) => (

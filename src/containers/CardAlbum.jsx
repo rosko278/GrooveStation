@@ -32,6 +32,7 @@ export default function CardAlbum() {
             <CardActionArea>
               <Link to={`/album/${album.id}`}>
                 <CardMedia
+                  sx={{ margin: 'auto' }}
                   component="img"
                   image={album.cover_big}
                   alt={album.title}

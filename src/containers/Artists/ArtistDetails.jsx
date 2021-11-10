@@ -88,7 +88,7 @@ function ArtistDetails() {
       />
       <Box
         sx={{
-          bgcolor: 'background.paper',
+          bgcolor: 'primary',
           width: '100%',
           minHeight: 200,
         }}
