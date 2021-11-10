@@ -5,7 +5,6 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import PopularSongElement from '../components/PopularSongsList/PopularSongElement';
 import ChartTracks from '../containers/ChartTracks';
-/* import FluxRssMusicNews from '../containers/FluxRssMusicNews'; */
 import RssStepper from '../containers/FluxRssStepper';
 import DeezerPlayer from '../components/PlayerDeezer';
 import './pages.css';
@@ -36,11 +35,6 @@ function HomePage() {
             <DeezerPlayer />
           </Item>
         </Grid>
-        {/* <Grid item xs={6}>
-          <Item sx={{ background: 'inherit' }}>
-            <FluxRssMusicNews />
-          </Item>
-        </Grid> */}
         <Grid item xs={3}>
           <Item sx={{ background: 'inherit' }}>
             <RssStepper />
