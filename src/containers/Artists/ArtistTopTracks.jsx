@@ -6,7 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 // Redux
 import { useSelector, useDispatch } from 'react-redux';
 import apiGetTopTracks from '../../api/apiArtistTopTracks';
@@ -54,7 +54,7 @@ function ArtistTopTracks() {
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {row.title}
+                <Link to={`/track/${row.id}`}>{row.title}</Link>
               </TableCell>
               <TableCell align="right">
                 {convertDuration(row.duration)}
