@@ -29,3 +29,7 @@ td {
   padding: 0.5em;
   border-bottom: solid 0.5px #b8b8b8;
 }
+
+.trackLink :hover {
+  color: red;
+}

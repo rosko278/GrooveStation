@@ -6,3 +6,7 @@ h1 {
 h2 {
   margin-left: 1rem;
 }
+
+.trackLink :hover {
+  color: red;
+}

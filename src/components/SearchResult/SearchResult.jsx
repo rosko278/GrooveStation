@@ -100,10 +100,18 @@ function SearchResult(props) {
       <section>
         <h3>Titre</h3>
         {searchTrack.trackFound.map((track) => (
-          <div className="item-result">
-            <img src={track.album.cover_small} alt={track.id} />
-            <p>{track.title}</p>
-          </div>
+          <Link
+            to={`/track/${track.id}`}
+            style={{
+              textDecoration: 'none',
+              color: 'white',
+            }}
+          >
+            <div className="item-result">
+              <img src={track.album.cover_small} alt={track.id} />
+              <p>{track.title}</p>
+            </div>
+          </Link>
         ))}
       </section>
     </div>
