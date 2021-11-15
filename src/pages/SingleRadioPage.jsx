@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import { Paper } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import { apiGetSingleRadio } from '../api/apiSingleRadio';
 import PlayButton from '../components/PlayButton';
 import convertDuration from '../core/functions/convertDuration';
@@ -54,7 +55,9 @@ function SingleRadioPage(props) {
                 />
               </td>
               <td>
-                <p>{content.title}</p>
+                <Link to={`/track/${content.id}`}>
+                  <p>{content.title}</p>
+                </Link>
               </td>
               <td>{content.artist.name}</td>
               <td>{convertDuration(content.duration)}</td>
