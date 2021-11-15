@@ -18,6 +18,7 @@ export default function Routage() {
         <Route exact path="/album" component={AlbumPage} />
         <Route exact path="/gender" component={GenderPage} />
         <Route exact path="/library" component={LibraryPage} />
+        <Route exact path="/gender/:id/artists" component={ArtistsPage} />
         <Route exact path="/album/:id" component={SingleAlbumPage} />
         <Route exact path="/library/:id" component={SingleRadioPage} />
         <Route exact path="/artist/:id" component={ArtistDetailsPage} />

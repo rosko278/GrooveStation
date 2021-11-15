@@ -13,18 +13,36 @@ import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Grid } from '@mui/material';
 import { Paper } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Error from '../../components/ErrorMessage';
 import Loading from '../../components/Loading';
 import apiChartArtists from '../../api/apiChartArtists';
+import apiGenderArtist from '../../api/apiGenderArtist';
 
 function ArtistsCard() {
   const [isLiked, toggleLike] = React.useState(false);
-
-  const artists = useSelector((state) => state.chartArtists);
+  let artists;
+  let dataArtists;
   const dispatch = useDispatch();
+  const { id } = useParams();
 
-  useEffect(() => dispatch(apiChartArtists()), [dispatch]);
+  if (id) {
+    /* get artists of a genre if id is present */
+    artists = useSelector((state) => state.genderArtist);
+    dataArtists = artists.genderArtist;
+  } else {
+    /* get top artists */
+    artists = useSelector((state) => state.chartArtists);
+    dataArtists = artists.top;
+  }
+
+  useEffect(() => {
+    if (id) {
+      dispatch(apiGenderArtist(id));
+    } else {
+      dispatch(apiChartArtists());
+    }
+  }, [dispatch]);
 
   if (artists.isLoading) {
     return <Loading />;
@@ -35,7 +53,7 @@ function ArtistsCard() {
 
   return (
     <Grid container spacing={7} sx={{ width: '99%', margin: 'auto' }}>
-      {artists.top.map((artist) => (
+      {dataArtists.map((artist) => (
         <Grid item xs={6} md={4} lg={3}>
           <Paper
             sx={{
