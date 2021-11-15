@@ -88,7 +88,14 @@ function SingleAlbumPage(props) {
               <tr key={singleAlbum.album.id}>
                 <td>{index + 1}</td>
                 <td>
-                  <Link to={`/track/${content.id}`}>
+                  <Link
+                    className="trackLink"
+                    to={`/track/${content.id}`}
+                    style={{
+                      textDecoration: 'none',
+                      color: 'inherit',
+                    }}
+                  >
                     <p>{content.title}</p>
                   </Link>
                 </td>
