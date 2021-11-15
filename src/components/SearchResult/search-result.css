@@ -1,12 +1,12 @@
 #hint-container {
   position: absolute;
   top: 50px;
-  left: 310px;
-  min-width: calc(325px + 36px);
-  max-width: calc(325px + 36px);
+  left: 80px;
+  min-width: calc(200px + 36px);
+  max-width: calc(500px + 36px);
   z-index: 9999;
   overflow: hidden;
-  background-color: #607d8b;
+  background: rgba(34, 45, 65, 47);
 }
 
 #hint-container section {
@@ -23,12 +23,16 @@
   display: flex;
 }
 
+.item-result:hover {
+  background: #607d8b;
+}
+
 p {
   margin-bottom: 1px;
 }
 
 img {
-  margin-bottom: 2px;
+  margin: 5px;
 }
 
 @media only screen and (max-width: 600px) {

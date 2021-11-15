@@ -3,7 +3,6 @@ h1 {
   text-align: center;
 }
 
-.test {
-  display: flex;
-  margin-left: 300px;
+h2 {
+  margin-left: 1rem;
 }

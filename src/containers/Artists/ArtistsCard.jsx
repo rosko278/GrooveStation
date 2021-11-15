@@ -6,13 +6,13 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 // Mui Import
-import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardActions from '@mui/material/CardActions';
 import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Grid } from '@mui/material';
+import { Paper } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import Error from '../../components/ErrorMessage';
 import Loading from '../../components/Loading';
@@ -34,10 +34,18 @@ function ArtistsCard() {
   }
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={7} sx={{ width: '99%', margin: 'auto' }}>
       {artists.top.map((artist) => (
         <Grid item xs={6} md={4} lg={3}>
-          <Card sx={{ maxWidth: 250 }}>
+          <Paper
+            sx={{
+              maxWidth: 250,
+              display: 'flex',
+              textAlign: 'center',
+              justifyContent: 'center',
+              flexDirection: 'column',
+            }}
+          >
             <CardHeader title={artist.name} />
             <Link to={`/artist/${artist.id}`}>
               <CardMedia
@@ -45,6 +53,7 @@ function ArtistsCard() {
                 height="250"
                 image={artist.picture_medium}
                 alt={artist.name}
+                sx={{ margin: 'auto' }}
               />
             </Link>
 
@@ -56,7 +65,7 @@ function ArtistsCard() {
                 />
               </IconButton>
             </CardActions>
-          </Card>
+          </Paper>
         </Grid>
       ))}
     </Grid>
