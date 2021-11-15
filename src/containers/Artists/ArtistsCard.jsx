@@ -36,7 +36,7 @@ function ArtistsCard() {
   return (
     <Grid container spacing={7} sx={{ width: '99%', margin: 'auto' }}>
       {artists.top.map((artist) => (
-        <Grid item xs={6} md={4} lg={3}>
+        <Grid item xs={10} md={4} lg={3}>
           <Paper
             sx={{
               maxWidth: 250,

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-import PopularSongElement from '../components/PopularSongsList/PopularSongElement';
+import Paper from '@mui/material/Paper';
+import PopularSongElement from '../containers/PopularSongElement';
 import ChartTracks from '../containers/ChartTracks';
 import RssStepper from '../containers/FluxRssStepper';
 import DeezerPlayer from '../components/PlayerDeezer';
@@ -25,20 +25,14 @@ function HomePage() {
             <ChartTracks />
           </Item>
         </Grid>
-        <Grid item xs={4}>
-          <Item sx={{ background: 'inherit' }}>
-            <PopularSongElement />
-          </Item>
+        <Grid item xs={12} md={4}>
+          <PopularSongElement />
         </Grid>
-        <Grid item xs={5}>
-          <Item sx={{ background: 'inherit' }}>
-            <DeezerPlayer />
-          </Item>
+        <Grid item xs={12} md={5}>
+          <DeezerPlayer />
         </Grid>
-        <Grid item xs={3}>
-          <Item sx={{ background: 'inherit' }}>
-            <RssStepper />
-          </Item>
+        <Grid item xs={12} md={3}>
+          <RssStepper />
         </Grid>
       </Grid>
     </Box>
