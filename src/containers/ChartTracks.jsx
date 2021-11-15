@@ -103,7 +103,7 @@ function ChartTracks() {
           {displayedImage}
         </AutoPlaySwipeableViews>
         <Paper
-          elevation={1}
+          elevation={0.5}
           style={{
             display: 'flex',
             justifyContent: 'center',
@@ -112,6 +112,7 @@ function ChartTracks() {
             p: 10,
             width: 600,
             minWidth: 120,
+            borderRadius: 18,
           }}
         >
           {displayedTracks}
