@@ -9,6 +9,7 @@ import { Paper } from '@material-ui/core';
 import Typography from '@mui/material/Typography';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
+import { Link } from 'react-router-dom';
 import PlayButton from '../../components/PlayButton';
 import convertDuration from '../../core/functions/convertDuration';
 import './SingleAlbumPage.css';
@@ -33,7 +34,6 @@ function SingleAlbumPage(props) {
   if (singleAlbum.error || Object.entries(singleAlbum.album).length === 0) {
     return <ErrorMessage errorMsg="Impossible de charger l'album' !" />;
   }
-
   return (
     <div>
       <Paper
@@ -57,9 +57,11 @@ function SingleAlbumPage(props) {
           <Typography style={{ fontSize: 22, lineHeight: 2 }} gutterBottom>
             {singleAlbum.album.artist.name}
           </Typography>
+
           <Typography style={{ fontSize: 22 }}>
             {singleAlbum.album.title}
           </Typography>
+
           <Typography style={{ fontSize: 14 }}>
             Nombre de titres : {singleAlbum.album.nb_tracks}
           </Typography>
@@ -89,7 +91,9 @@ function SingleAlbumPage(props) {
               <tr key={singleAlbum.album.id}>
                 <td>{index + 1}</td>
                 <td>
-                  <p>{content.title}</p>
+                  <Link to={`/track/${content.id}`}>
+                    <p>{content.title}</p>
+                  </Link>
                 </td>
                 <td>{convertDuration(content.duration)}</td>
                 <td>
