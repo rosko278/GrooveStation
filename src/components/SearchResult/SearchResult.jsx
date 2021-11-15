@@ -1,14 +1,13 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { apiGetSearchAlbum } from '../../api/apiSearchAlbum';
 import { apiGetSearchArtist } from '../../api/apiSearchArtist';
 import { apiGetSearchTrack } from '../../api/apiSearchTrack';
 import ErrorMessage from '../ErrorMessage';
 import Loading from '../Loading';
 import './search-result.css';
-
-/* import { Link } from 'react-router-dom'; */
 
 function SearchResult(props) {
   const { search } = props;
@@ -67,19 +66,35 @@ function SearchResult(props) {
       <section>
         <h3>Album</h3>
         {searchAlbum.albumFound.map((album) => (
-          <div className="item-result">
-            <img src={album.cover_small} alt={album.id} />
-            <p>{album.title}</p>
-          </div>
+          <Link
+            to={`/album/${album.id}`}
+            style={{
+              textDecoration: 'none',
+              color: 'white',
+            }}
+          >
+            <div className="item-result">
+              <img src={album.cover_small} alt={album.id} />
+              <p>{album.title}</p>
+            </div>
+          </Link>
         ))}
       </section>
       <section>
         <h3>Artiste</h3>
         {searchArtist.artistFound.map((artiste) => (
-          <div className="item-result">
-            <img src={artiste.picture_small} alt={artiste.id} />
-            <p>{artiste.name}</p>
-          </div>
+          <Link
+            to={`/artist/${artiste.id}`}
+            style={{
+              textDecoration: 'none',
+              color: 'white',
+            }}
+          >
+            <div className="item-result">
+              <img src={artiste.picture_small} alt={artiste.id} />
+              <p>{artiste.name}</p>
+            </div>
+          </Link>
         ))}
       </section>
       <section>

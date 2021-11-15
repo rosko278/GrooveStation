@@ -1,11 +1,11 @@
-import { Typography } from '@mui/material';
 import React from 'react';
 import ArtistsCard from '../containers/Artists/ArtistsCard';
+import './pages.css';
 
 function ArtistsPage() {
   return (
     <div>
-      <Typography variant="h2">Liste des artistes</Typography>
+      <h2>Liste des artistes</h2>
       <ArtistsCard />
     </div>
   );
