@@ -29,3 +29,21 @@ td {
   padding: 0.5em;
   border-bottom: solid 0.5px #b8b8b8;
 }
+
+.trackLink :hover {
+  color: red;
+}
+
+@media only screen and (max-width: 600px) {
+  th {
+    font-size: 1em;
+    padding: 0.1em;
+  }
+
+  td {
+    position: relative;
+    height: 40px;
+    padding: 0.1em;
+    font-size: 1em;
+  }
+}

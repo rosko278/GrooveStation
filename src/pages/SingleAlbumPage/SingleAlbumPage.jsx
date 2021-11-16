@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { Box } from '@mui/system';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import { Paper } from '@material-ui/core';
@@ -42,7 +41,6 @@ function SingleAlbumPage(props) {
         style={{
           maxWidth: '99%',
           display: 'flex',
-          justifyContent: 'space-between',
           height: 250,
           margin: 'auto',
           textAlign: 'center',
@@ -53,6 +51,7 @@ function SingleAlbumPage(props) {
           src={singleAlbum.album.cover_medium}
           alt={singleAlbum.album.title}
         />
+
         <CardContent sx={{ minWidth: 150 }}>
           <Typography style={{ fontSize: 22, lineHeight: 2 }} gutterBottom>
             {singleAlbum.album.artist.name}
@@ -70,10 +69,8 @@ function SingleAlbumPage(props) {
             <br />
             Abonnés {singleAlbum.album.fans}
           </Typography>
-        </CardContent>
-        <CardActions>
           <Button size="large">{singleAlbum.album.genres.data[0].name}</Button>
-        </CardActions>
+        </CardContent>
       </Paper>
       <Box sx={{ height: 8 }} />
       <Paper square elevation={5} style={{ maxWidth: '99%', margin: 'auto' }}>
@@ -91,7 +88,14 @@ function SingleAlbumPage(props) {
               <tr key={singleAlbum.album.id}>
                 <td>{index + 1}</td>
                 <td>
-                  <Link to={`/track/${content.id}`}>
+                  <Link
+                    className="trackLink"
+                    to={`/track/${content.id}`}
+                    style={{
+                      textDecoration: 'none',
+                      color: 'inherit',
+                    }}
+                  >
                     <p>{content.title}</p>
                   </Link>
                 </td>

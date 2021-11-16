@@ -55,7 +55,14 @@ function SingleRadioPage(props) {
                 />
               </td>
               <td>
-                <Link to={`/track/${content.id}`}>
+                <Link
+                  className="trackLink"
+                  to={`/track/${content.id}`}
+                  style={{
+                    textDecoration: 'none',
+                    color: 'inherit',
+                  }}
+                >
                   <p>{content.title}</p>
                 </Link>
               </td>

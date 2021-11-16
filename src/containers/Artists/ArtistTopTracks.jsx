@@ -5,6 +5,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import '../../pages/pages.css';
 import Paper from '@mui/material/Paper';
 import { useParams, Link } from 'react-router-dom';
 // Redux
@@ -56,7 +57,16 @@ function ArtistTopTracks() {
               }}
             >
               <TableCell component="th" scope="row">
-                <Link to={`/track/${row.id}`}>{row.title}</Link>
+                <Link
+                  className="trackLink"
+                  to={`/track/${row.id}`}
+                  style={{
+                    textDecoration: 'none',
+                    color: 'inherit',
+                  }}
+                >
+                  {row.title}
+                </Link>
               </TableCell>
               <TableCell align="right">
                 {convertDuration(row.duration)}

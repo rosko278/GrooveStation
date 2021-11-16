@@ -26,12 +26,14 @@ import artistReducer from './artist/artistReducer';
 import artistAlbumsReducer from './artistAlbums/artistAlbumsReducer';
 import genderArtistReducer from './genderArtist/genderArtistReducer';
 import trackReducer from './track/trackReducer';
+import chartPlaylistReducer from './chartPlaylist/chartPlaylistReducer';
 /**
  * Creates root reducer which contains all reducers
  */
 const rootReducer = combineReducers({
   chartTracks: chartTracksReducer,
   chartAlbum: chartAlbumReducer,
+  chartPlaylist: chartPlaylistReducer,
   singleAlbum: singleAlbumReducer,
   radio: radioReducer,
   singleRadio: singleRadioReducer,

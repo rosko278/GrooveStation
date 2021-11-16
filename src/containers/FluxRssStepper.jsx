@@ -59,6 +59,8 @@ export default function RssStepper() {
           height: 90,
           p: 2,
           bgcolor: 'background.default',
+          textAlign: 'center',
+          borderRadius: 12,
         }}
       >
         <Typography variant="h6">
@@ -73,11 +75,12 @@ export default function RssStepper() {
           height: 210,
           maxWidth: 400,
           width: '100%',
-          p: 2,
           display: 'flex',
-          justifyContent: 'space-around',
+          justifyContent: 'center',
           alignItems: 'center',
           flexDirection: 'column',
+          textAlign: 'center',
+          borderRadius: 12,
         }}
       >
         {fluxRss.news[activeStep].description[0]}
