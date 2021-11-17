@@ -158,6 +158,16 @@ export default function PrimarySearchAppBar() {
     setSearch(result);
   };
 
+  window.addEventListener('click', (e) => {
+    if (document.getElementById('searchbar').contains(e.target)) {
+      const clear = '';
+      setSearch(clear);
+    } else {
+      const clear = '';
+      setSearch(clear);
+    }
+  });
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -175,6 +185,7 @@ export default function PrimarySearchAppBar() {
               inputProps={{ 'aria-label': 'search' }}
               value={search}
               onChange={handleSearch}
+              id="searchbar"
             />
             {search && <SearchResult search={search} />}
           </Search>
