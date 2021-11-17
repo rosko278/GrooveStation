@@ -38,6 +38,20 @@ const genderArtistReducer = (state = initialStateGender, action) => {
       error: action.payload,
     };
   }
+
+  if (action.type === genderArtistTypes.LIKE) {
+    const genderArtist = state.genderArtist.map((artist) => {
+      if (artist.id === action.payload) {
+        return { ...artist, isLiked: !artist.isLiked };
+      }
+      return artist;
+    });
+
+    return {
+      ...state,
+      genderArtist,
+    };
+  }
   return state;
 };
 

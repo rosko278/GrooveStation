@@ -19,3 +19,10 @@ export const genderArtistError = (error) => {
     payload: error,
   };
 };
+
+export const genderArtistsLike = (id) => {
+  return {
+    type: genderArtistTypes.LIKE,
+    payload: id,
+  };
+};

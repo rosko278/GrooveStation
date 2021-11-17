@@ -25,10 +25,15 @@ const chartArtistsReducer = (state = initialStateChartTracks, action) => {
     };
   }
   if (action.type === chartArtistsTypes.LOAD_CHART_ARTISTS_SUCCESS) {
+    const top = action.payload.map((artist) => ({
+      ...artist,
+      isLiked: false,
+    }));
+
     return {
       ...state,
       isLoading: false,
-      top: action.payload,
+      top,
     };
   }
   if (action.type === chartArtistsTypes.LOAD_CHART_ARTISTS_ERROR) {
@@ -38,6 +43,21 @@ const chartArtistsReducer = (state = initialStateChartTracks, action) => {
       error: action.payload,
     };
   }
+
+  if (action.type === chartArtistsTypes.LIKE) {
+    const top = state.top.map((artist) => {
+      if (artist.id === action.payload) {
+        return { ...artist, isLiked: !artist.isLiked };
+      }
+      return artist;
+    });
+
+    return {
+      ...state,
+      top,
+    };
+  }
+
   return state;
 };
 

@@ -19,3 +19,10 @@ export const chartArtistsError = (error) => {
     payload: error,
   };
 };
+
+export const chartArtistsLike = (id) => {
+  return {
+    type: chartArtistsTypes.LIKE,
+    payload: id,
+  };
+};

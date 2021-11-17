@@ -1,6 +1,3 @@
-// ressource: https://mui.com/components/use-media-query/#migrating-from-withwidth
-// ex: https://codesandbox.io/s/4zynr?file=/demo.js:986-997
-
 // App import
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -18,11 +15,13 @@ import Error from '../../components/ErrorMessage';
 import Loading from '../../components/Loading';
 import apiChartArtists from '../../api/apiChartArtists';
 import apiGenderArtist from '../../api/apiGenderArtist';
+import { chartArtistsLike } from '../../state/chartArtists/chartArtistsActions';
+import { genderArtistsLike } from '../../state/genderArtist/genderArtistActions';
 
 function ArtistsCard() {
-  const [isLiked, toggleLike] = React.useState(false);
   let artists;
   let dataArtists;
+  let likeDispatch;
   const dispatch = useDispatch();
   const { id } = useParams();
 
@@ -30,10 +29,12 @@ function ArtistsCard() {
     /* get artists of a genre if id is present */
     artists = useSelector((state) => state.genderArtist);
     dataArtists = artists.genderArtist;
+    likeDispatch = genderArtistsLike;
   } else {
     /* get top artists */
     artists = useSelector((state) => state.chartArtists);
     dataArtists = artists.top;
+    likeDispatch = chartArtistsLike;
   }
 
   useEffect(() => {
@@ -53,11 +54,12 @@ function ArtistsCard() {
 
   return (
     <Grid container spacing={7} sx={{ width: '99%', margin: 'auto' }}>
-      {dataArtists.map((artist) => (
+      {dataArtists.map((artist, index) => (
         <Grid item xs={10} md={4} lg={3}>
           <Paper
+            style={{ maxWidth: '265px' }}
             sx={{
-              maxWidth: 250,
+              maxWidth: '250px',
               display: 'flex',
               textAlign: 'center',
               justifyContent: 'center',
@@ -68,18 +70,22 @@ function ArtistsCard() {
             <Link to={`/artist/${artist.id}`}>
               <CardMedia
                 component="img"
-                height="250"
+                height="250px"
                 image={artist.picture_medium}
                 alt={artist.name}
-                sx={{ margin: 'auto' }}
+                sx={{ margin: 'auto', maxWidth: '250px' }}
               />
             </Link>
 
             <CardActions disableSpacing>
-              <IconButton aria-label="add to favorites">
+              <IconButton
+                aria-label="add to favorites"
+                onClick={() => {
+                  dispatch(likeDispatch(artist.id));
+                }}
+              >
                 <FavoriteIcon
-                  onClick={() => toggleLike(!isLiked)}
-                  sx={{ color: isLiked ? 'red' : null }}
+                  sx={{ color: dataArtists[index].isLiked ? 'red' : null }}
                 />
               </IconButton>
             </CardActions>
