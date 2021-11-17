@@ -24,6 +24,7 @@ import chartArtistsReducer from './chartArtists/chartArtistsReducer';
 import artistTopTracksReducer from './artistTopTracks/artistTopTracksReducer';
 import artistReducer from './artist/artistReducer';
 import artistAlbumsReducer from './artistAlbums/artistAlbumsReducer';
+import genderArtistReducer from './genderArtist/genderArtistReducer';
 import trackReducer from './track/trackReducer';
 import chartPlaylistReducer from './chartPlaylist/chartPlaylistReducer';
 /**
@@ -45,6 +46,7 @@ const rootReducer = combineReducers({
   artist: artistReducer,
   artistTopTracks: artistTopTracksReducer,
   artistAlbums: artistAlbumsReducer,
+  genderArtist: genderArtistReducer,
   track: trackReducer,
 });
 
