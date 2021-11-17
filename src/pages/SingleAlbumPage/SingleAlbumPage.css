@@ -32,7 +32,8 @@ td {
 
 .trackLink :hover {
   color: red;
-  
+}
+
 @media only screen and (max-width: 600px) {
   th {
     font-size: 1em;
