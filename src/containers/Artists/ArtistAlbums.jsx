@@ -1,12 +1,6 @@
 import React, { useEffect } from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import { useParams } from 'react-router-dom';
+import { Paper } from '@material-ui/core';
+import { Link, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 // Redux
 import apiGetAlbums from '../../api/apiArtistAlbums';
@@ -14,6 +8,8 @@ import apiGetAlbums from '../../api/apiArtistAlbums';
 // alerts
 import Loading from '../../components/Loading';
 import Error from '../../components/ErrorMessage';
+import convertDate from '../../core/functions/convertDate';
+import convertNbFans from '../../core/functions/convertNbFans';
 
 function ArtistTopTracks() {
   const artist = useSelector((state) => state.artistAlbums);
@@ -35,32 +31,40 @@ function ArtistTopTracks() {
   }
 
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 350 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Nom</TableCell>
-            <TableCell align="right">Date de sortie</TableCell>
-            <TableCell align="right">Fans</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {artist.albums.map((row) => (
-            <TableRow
-              hover
-              key={row.id}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.title}
-              </TableCell>
-              <TableCell align="right">{row.release_date}</TableCell>
-              <TableCell align="right">{row.fans}</TableCell>
-            </TableRow>
+    <Paper square elevation={5} style={{ maxWidth: '99%', margin: 'auto' }}>
+      <table>
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th className="row-center">Date de sortie</th>
+            <th className="row-center">Fans</th>
+          </tr>
+        </thead>
+        <tbody>
+          {artist.albums.map((content) => (
+            <tr key={content.title}>
+              <td>
+                <Link
+                  className="artistLink"
+                  to={`/album/${content.id}`}
+                  style={{
+                    textDecoration: 'none',
+                    color: 'inherit',
+                  }}
+                >
+                  <img src={content.cover_small} alt={content.title} />
+                  <p>{content.title}</p>
+                </Link>
+              </td>
+              <td className="row-center">
+                {convertDate(content.release_date)}
+              </td>
+              <td className="row-center">{convertNbFans(content.fans)}</td>
+            </tr>
           ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+        </tbody>
+      </table>
+    </Paper>
   );
 }
 

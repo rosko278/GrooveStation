@@ -69,7 +69,14 @@ function SingleAlbumPage(props) {
             <br />
             Abonnés {singleAlbum.album.fans}
           </Typography>
-          <Button size="large">{singleAlbum.album.genres.data[0].name}</Button>
+          <Link
+            className="genre-link"
+            to={`/gender/${singleAlbum.album.genres.data[0].id}/artists`}
+          >
+            <Button size="large">
+              {singleAlbum.album.genres.data[0].name}
+            </Button>
+          </Link>
         </CardContent>
       </Paper>
       <Box sx={{ height: 8 }} />

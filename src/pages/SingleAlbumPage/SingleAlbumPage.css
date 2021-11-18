@@ -34,6 +34,9 @@ td {
   color: red;
 }
 
+.genre-link {
+  text-decoration: none;
+}
 @media only screen and (max-width: 600px) {
   th {
     font-size: 1em;
