@@ -5,8 +5,9 @@ import { Link, useParams } from 'react-router-dom';
 import apiArtistsRelated from '../../api/apiArtistsRelated';
 import Loading from '../../components/Loading';
 import Error from '../../components/ErrorMessage';
+import convertNbFans from '../../core/functions/convertNbFans';
 
-function SingleRadioPage(/* props */) {
+function ArtistsRelated() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.artistsRelated);
 
@@ -29,8 +30,8 @@ function SingleRadioPage(/* props */) {
         <thead>
           <tr>
             <th>Artiste</th>
-            <th>Nombre d&apos;albums</th>
-            <th>Fans</th>
+            <th className="row-center">Nombre d&apos;albums</th>
+            <th className="row-center">Fans</th>
           </tr>
         </thead>
         <tbody>
@@ -49,8 +50,8 @@ function SingleRadioPage(/* props */) {
                   <p>{content.name}</p>
                 </Link>
               </td>
-              <td>{content.nb_album}</td>
-              <td>{content.nb_fan}</td>
+              <td className="row-center">{content.nb_album}</td>
+              <td className="row-center">{convertNbFans(content.nb_fan)}</td>
             </tr>
           ))}
         </tbody>
@@ -58,9 +59,4 @@ function SingleRadioPage(/* props */) {
     </Paper>
   );
 }
-
-// SingleRadioPage.propTypes = {
-//   match: PropTypes.node.isRequired,
-// };
-
-export default SingleRadioPage;
+export default ArtistsRelated;

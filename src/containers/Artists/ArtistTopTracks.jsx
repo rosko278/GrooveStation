@@ -1,12 +1,6 @@
 import React, { useEffect } from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
+import { Paper } from '@material-ui/core';
 import '../../pages/pages.css';
-import Paper from '@mui/material/Paper';
 import { useParams, Link } from 'react-router-dom';
 // Redux
 import { useSelector, useDispatch } from 'react-redux';
@@ -38,47 +32,39 @@ function ArtistTopTracks() {
   }
 
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 350 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Titre</TableCell>
-            <TableCell align="right">Durée</TableCell>
-            <TableCell align="right">Aperçu</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
+    <Paper square elevation={5} style={{ maxWidth: '99%', margin: 'auto' }}>
+      <table>
+        <thead>
+          <tr>
+            <th className="row-left">Titre</th>
+            <th className="row-center">Durée</th>
+            <th className="row-center">Aperçu</th>
+          </tr>
+        </thead>
+        <tbody>
           {tracks.top.map((row) => (
-            <TableRow
-              hover
-              key={row.id}
-              sx={{
-                '&:last-child td, &:last-child th': { border: 0 },
-              }}
-            >
-              <TableCell component="th" scope="row">
+            <tr key={row.title}>
+              <td>
                 <Link
-                  className="trackLink"
+                  className="topTracksLink"
                   to={`/track/${row.id}`}
                   style={{
                     textDecoration: 'none',
                     color: 'inherit',
                   }}
                 >
-                  {row.title}
+                  <p>{row.title}</p>
                 </Link>
-              </TableCell>
-              <TableCell align="right">
-                {convertDuration(row.duration)}
-              </TableCell>
-              <TableCell align="right">
+              </td>
+              <td className="row-center">{convertDuration(row.duration)}</td>
+              <td className="row-center">
                 <PlayButton url={row.preview} />
-              </TableCell>
-            </TableRow>
+              </td>
+            </tr>
           ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+        </tbody>
+      </table>
+    </Paper>
   );
 }
 

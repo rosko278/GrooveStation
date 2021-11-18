@@ -7,11 +7,9 @@ h2 {
   margin-left: 1rem;
 }
 
-.trackLink:hover {
-  color: red;
-}
-
-.artistLink:hover {
+.trackLink :hover,
+.artistLink :hover,
+.topTracksLink :hover {
   color: red;
 }
 
@@ -19,7 +17,10 @@ h2 {
   display: flex;
 }
 
-td,
-tr th {
+.row-left {
+  text-align: left;
+}
+
+.row-center {
   text-align: center;
 }
