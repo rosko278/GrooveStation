@@ -20,6 +20,7 @@ import Error from '../../components/ErrorMessage';
 // containers
 import ArtistTopTracks from './ArtistTopTracks';
 import ArtistAlbums from './ArtistAlbums';
+import ArtistRelated from './ArtistRelated';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -68,7 +69,7 @@ function ArtistDetails() {
 
   useEffect(() => {
     dispatch(apiArtistInfos(id));
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   if (artist.isLoading) {
     return <Loading />;
@@ -82,7 +83,7 @@ function ArtistDetails() {
       <Box
         sx={{
           height: '500px',
-          background: `url('${artist.info.picture_xl}') no-repeat center`,
+          background: `url('${artist.info.picture_xl}') no-repeat center center`,
           backgroundSize: 'cover',
         }}
       />
@@ -105,7 +106,7 @@ function ArtistDetails() {
           >
             <Tab label="Morceaux populaires" {...a11yProps(0)} />
             <Tab label="Albums" {...a11yProps(1)} />
-            <Tab label="Apparait dans" {...a11yProps(2)} />
+            <Tab label="Artistes similaires" {...a11yProps(2)} />
           </Tabs>
         </AppBar>
         <SwipeableViews
@@ -120,7 +121,7 @@ function ArtistDetails() {
             <ArtistAlbums />
           </TabPanel>
           <TabPanel value={value} index={2} dir={theme.direction}>
-            Apparait dans
+            <ArtistRelated />
           </TabPanel>
         </SwipeableViews>
       </Box>
