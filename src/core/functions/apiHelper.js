@@ -1,11 +1,12 @@
 import axios from 'axios';
 
 const axiosApiMusicConfig = {
-  baseURL: 'http://localhost:8080/https://api.deezer.com/',
+  baseURL: 'https://groove-station-node.herokuapp.com/https://api.deezer.com/',
 };
 
 const axiosFluxRssConfig = {
-  baseURL: 'http://localhost:8080/https://www.lesinrocks.com/',
+  baseURL:
+    'https://groove-station-node.herokuapp.com/https://www.lesinrocks.com/',
 };
 
 export const axiosApiMusic = axios.create(axiosApiMusicConfig);
