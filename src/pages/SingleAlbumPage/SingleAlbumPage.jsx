@@ -11,6 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import { Link } from 'react-router-dom';
 import PlayButton from '../../components/PlayButton';
 import convertDuration from '../../core/functions/convertDuration';
+import convertNbFans from '../../core/functions/convertNbFans';
 import './SingleAlbumPage.css';
 import Loading from '../../components/Loading';
 import ErrorMessage from '../../components/ErrorMessage';
@@ -67,7 +68,7 @@ function SingleAlbumPage(props) {
           <Typography variant="body2" style={{ fontSize: 14 }}>
             Durée : {Math.floor(singleAlbum.album.duration / 60)}min
             <br />
-            Abonnés {singleAlbum.album.fans}
+            Abonnés {convertNbFans(singleAlbum.album.fans)}
           </Typography>
           <Link
             className="genre-link"

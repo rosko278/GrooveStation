@@ -4,6 +4,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Chip, Typography } from '@mui/material';
 import { apiGetChartPlaylist } from '../api/apiChartPlaylist';
@@ -29,13 +30,27 @@ export default function PopularSongs() {
         }}
       />
       {chartPlaylist.top.map((content) => (
-        <ListItem>
+        <ListItem sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <ListItemAvatar>
             <Avatar src={content.picture_small} />
           </ListItemAvatar>
-          <ListItemText primary={content.title} />
-          <Typography style={{ fontSize: 12, fontStyle: 'italic' }}>
-            {`Titres : ${content.nb_tracks}`}{' '}
+          <Link
+            to={`/playlist/${content.id}`}
+            className="trackLink"
+            style={{
+              textDecoration: 'none',
+              color: 'inherit',
+            }}
+          >
+            <ListItemText primary={content.title} />
+          </Link>
+          <Typography
+            style={{
+              fontSize: 12,
+              fontStyle: 'italic',
+            }}
+          >
+            {`Titres : ${content.nb_tracks}`}
           </Typography>
         </ListItem>
       ))}
