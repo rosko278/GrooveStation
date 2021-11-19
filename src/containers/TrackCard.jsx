@@ -11,6 +11,7 @@ import apiTrack from '../api/apiTracks';
 import Loading from '../components/Loading';
 import Error from '../components/ErrorMessage';
 import PlayButton from '../components/PlayButton';
+import convertDate from '../core/functions/convertDate';
 
 const Root = styled('div')(({ theme }) => ({
   width: '100%',
@@ -26,7 +27,7 @@ export default function TrackCard() {
   const track = useSelector((state) => state.track);
   useEffect(() => {
     dispatch(apiTrack(id));
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   if (track.isLoading || Object.entries(track.track).length === 0) {
     return <Loading />;
@@ -109,7 +110,7 @@ export default function TrackCard() {
                       sx={{ background: '#607d8b', color: '#FFF' }}
                     />
                   </Divider>
-                  {track.track.release_date}
+                  {convertDate(track.track.release_date)}
                   <Divider sx={{ marginBottom: 1 }}>
                     <Chip
                       label="BPM"
