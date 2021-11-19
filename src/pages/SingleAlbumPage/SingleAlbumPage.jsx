@@ -25,7 +25,7 @@ function SingleAlbumPage(props) {
 
   useEffect(() => {
     dispatch(apiGetSingleAlbum(match.params.id));
-  }, [dispatch]);
+  }, [dispatch, match.params.id]);
 
   if (singleAlbum.isLoading || Object.entries(singleAlbum.album).length === 0) {
     return <Loading />;
