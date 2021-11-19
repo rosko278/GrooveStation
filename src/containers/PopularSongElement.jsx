@@ -18,13 +18,16 @@ export default function PopularSongs() {
   }, [dispatch]);
 
   return (
-    <Paper square elevation={5} style={{ borderRadius: 12 }}>
+    <Paper
+      square
+      elevation={5}
+      style={{ borderRadius: 12, textAlign: 'center' }}
+    >
       <Chip
         label="PLAYLIST DU MOMENT"
         sx={{
           background: '#607d8b',
           color: '#FFF',
-          ml: 10,
           mb: 5,
           fontSize: 20,
         }}
