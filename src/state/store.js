@@ -28,6 +28,7 @@ import genderArtistReducer from './genderArtist/genderArtistReducer';
 import trackReducer from './track/trackReducer';
 import chartPlaylistReducer from './chartPlaylist/chartPlaylistReducer';
 import artistsRelatedReducer from './artistsRelated/artistsRelatedReducer';
+import trackPlaylistReducer from './trackPlaylist/trackPlaylistReducer';
 /**
  * Creates root reducer which contains all reducers
  */
@@ -49,6 +50,7 @@ const rootReducer = combineReducers({
   artistAlbums: artistAlbumsReducer,
   genderArtist: genderArtistReducer,
   track: trackReducer,
+  trackPlaylist: trackPlaylistReducer,
   artistsRelated: artistsRelatedReducer,
 });
 
