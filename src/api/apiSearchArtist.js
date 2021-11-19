@@ -5,12 +5,12 @@ import {
 } from '../state/search/searchArtist/searchArtistActions';
 import { axiosApiMusic } from '../core/functions/apiHelper';
 
-export const apiGetSearchArtist = () => {
+export const apiGetSearchArtist = (search) => {
   // (id)
   return (dispatch) => {
     dispatch(searchArtistLoading());
     axiosApiMusic
-      .get(`/search/artist?q=eminem&limit=3`)
+      .get(`/search/artist?q=${search}&limit=3`)
       .then((res) => {
         dispatch(searchArtistSuccess(res.data.data));
         return res;

@@ -3,7 +3,24 @@ h1 {
   text-align: center;
 }
 
-.test {
+h2 {
+  margin-left: 1rem;
+}
+
+.trackLink :hover,
+.artistLink :hover,
+.topTracksLink :hover {
+  color: red;
+}
+
+.artistLink {
   display: flex;
-  margin-left: 300px;
+}
+
+.row-left {
+  text-align: left;
+}
+
+.row-center {
+  text-align: center;
 }

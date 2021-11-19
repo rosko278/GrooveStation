@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import SwitchUI from '@material-ui/core/Switch';
 import { AppBar, Avatar, Toolbar, Typography } from '@material-ui/core';
@@ -13,8 +13,10 @@ import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import { Link } from 'react-router-dom';
 import { CustomThemeContext } from '../theme/CustomThemeProvider';
 import Drawer from './Drawer/Drawer';
+import SearchResult from './SearchResult/SearchResult';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -150,14 +152,30 @@ export default function PrimarySearchAppBar() {
   );
 
   const [search, setSearch] = useState('');
-  useEffect(() => {}, [search]);
+
+  const handleSearch = (e) => {
+    const result = e.target.value;
+    setSearch(result);
+  };
+
+  window.addEventListener('click', (e) => {
+    if (document.getElementById('searchbar').contains(e.target)) {
+      const clear = '';
+      setSearch(clear);
+    } else {
+      const clear = '';
+      setSearch(clear);
+    }
+  });
 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
           <Drawer />
-          <Typography variant="h5">GrooveStation</Typography>
+          <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Typography variant="h5">GrooveStation</Typography>
+          </Link>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -166,8 +184,10 @@ export default function PrimarySearchAppBar() {
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
               value={search}
-              onChange={(event) => setSearch(event.target.value)}
+              onChange={handleSearch}
+              id="searchbar"
             />
+            {search && <SearchResult search={search} />}
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <FormControlLabel
@@ -176,7 +196,7 @@ export default function PrimarySearchAppBar() {
           />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large">
-              <Badge badgeContent={17} color="error">
+              <Badge badgeContent={0} color="error">
                 <NotificationsIcon />
               </Badge>
             </IconButton>

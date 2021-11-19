@@ -11,8 +11,6 @@ const radioReducer = (state = initialStateRadio, action) => {
     return {
       ...state,
       isLoading: true,
-      top: [],
-      error: '',
     };
   }
   if (action.type === radioTypes.LOAD_RADIO_SUCCESS) {
@@ -20,15 +18,16 @@ const radioReducer = (state = initialStateRadio, action) => {
       ...state,
       isLoading: false,
       top: action.payload,
-      error: '',
     };
   }
-  return {
-    ...state,
-    isLoading: false,
-    top: [],
-    error: action.payload,
-  };
+  if (action.type === radioTypes.LOAD_RADIO_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      error: action.payload,
+    };
+  }
+  return state;
 };
 
 export default radioReducer;

@@ -1,5 +1,6 @@
 import React from 'react';
 import CardAlbum from '../containers/CardAlbum';
+import './pages.css';
 
 function AlbumPage() {
   return (

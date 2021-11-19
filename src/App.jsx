@@ -2,7 +2,7 @@ import React from 'react';
 import AppBar from './components/AppBar';
 import Routage from './routes';
 
-export default function App() {
+function App() {
   return (
     <div>
       <AppBar />
@@ -10,3 +10,5 @@ export default function App() {
     </div>
   );
 }
+
+export default App;

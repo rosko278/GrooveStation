@@ -22,8 +22,6 @@ const rssReducer = (state = initialStaterss, action) => {
     return {
       ...state,
       isLoading: true,
-      news: [],
-      error: '',
     };
   }
   if (action.type === rssTypes.LOAD_RSS_SUCCESS) {
@@ -31,15 +29,16 @@ const rssReducer = (state = initialStaterss, action) => {
       ...state,
       isLoading: false,
       news: action.payload,
-      error: '',
     };
   }
-  return {
-    ...state,
-    isLoading: false,
-    news: [],
-    error: action.payload,
-  };
+  if (action.type === rssTypes.LOAD_RSS_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      error: action.payload,
+    };
+  }
+  return state;
 };
 
 export default rssReducer;

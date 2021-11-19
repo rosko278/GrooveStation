@@ -1,5 +1,4 @@
 import * as React from 'react';
-/* import Card from '@mui/material/Card'; */
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
@@ -19,7 +18,7 @@ export default function CardAlbum() {
   }, [dispatch]);
 
   return (
-    <Grid container spacing={5}>
+    <Grid container spacing={5} sx={{ width: '98%', margin: 'auto' }}>
       {chartAlbum.top.map((album) => (
         <Grid item xs={12} md={3}>
           <Paper
@@ -32,6 +31,7 @@ export default function CardAlbum() {
             <CardActionArea>
               <Link to={`/album/${album.id}`}>
                 <CardMedia
+                  sx={{ margin: 'auto' }}
                   component="img"
                   image={album.cover_big}
                   alt={album.title}

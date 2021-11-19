@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import apiGender from '../api/apiGender';
 import Loading from '../components/Loading';
 import Error from '../components/ErrorMessage';
@@ -94,6 +95,7 @@ export default function ButtonGenre() {
         minWidth: 300,
         width: '100%',
         gap: '20px',
+        justifyContent: 'space-around',
       }}
     >
       {genres.gender.slice(1, genres.gender.length).map((genre) => (
@@ -104,26 +106,28 @@ export default function ButtonGenre() {
             width: '250px',
           }}
         >
-          <ImageSrc
-            style={{ backgroundImage: `url(${genre.picture_medium})` }}
-          />
-          <ImageBackdrop className="MuiImageBackdrop-root" />
-          <Image>
-            <Typography
-              component="span"
-              variant="subtitle1"
-              color="inherit"
-              sx={{
-                position: 'relative',
-                p: 4,
-                pt: 2,
-                pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
-              }}
-            >
-              {genre.name}
-              <ImageMarked className="MuiImageMarked-root" />
-            </Typography>
-          </Image>
+          <Link to={`gender/${genre.id}/artists`}>
+            <ImageSrc
+              style={{ backgroundImage: `url(${genre.picture_medium})` }}
+            />
+            <ImageBackdrop className="MuiImageBackdrop-root" />
+            <Image>
+              <Typography
+                component="span"
+                variant="subtitle1"
+                color="inherit"
+                sx={{
+                  position: 'relative',
+                  p: 4,
+                  pt: 2,
+                  pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
+                }}
+              >
+                {genre.name}
+                <ImageMarked className="MuiImageMarked-root" />
+              </Typography>
+            </Image>
+          </Link>
         </ImageButton>
       ))}
     </Box>

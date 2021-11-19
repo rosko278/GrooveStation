@@ -6,7 +6,6 @@ import {
 import { axiosApiMusic } from '../core/functions/apiHelper';
 
 export const apiGetSingleAlbum = (id) => {
-  // (id)
   return (dispatch) => {
     dispatch(singleAlbumLoading());
     axiosApiMusic
@@ -15,7 +14,9 @@ export const apiGetSingleAlbum = (id) => {
         dispatch(singleAlbumSuccess(res.data));
         return res;
       })
-      .catch((error) => dispatch(singleAlbumError(error)));
+      .catch((error) => {
+        dispatch(singleAlbumError(error));
+      });
   };
 };
 

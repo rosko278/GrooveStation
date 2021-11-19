@@ -1,12 +1,8 @@
 import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import MobileStepper from '@mui/material/MobileStepper';
-import Paper from '@mui/material/Paper';
+import { Paper } from '@material-ui/core';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 /**
@@ -33,14 +29,6 @@ function ChartTracks() {
   }, [dispatch]);
 
   let maxSteps = 0;
-
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
 
   const handleStepChange = (step) => {
     setActiveStep(step);
@@ -76,7 +64,7 @@ function ChartTracks() {
       );
 
       displayedImage = chartTracks.top.slice(0, maxSteps).map((step, index) => (
-        <Box sx={{ background: 'inherit', maxWidth: '80%' }} key={step.id}>
+        <Box sx={{ maxWidth: 600 }} key={step.id}>
           {Math.abs(activeStep - index) <= 2 ? (
             <Paper
               square
@@ -86,9 +74,8 @@ function ChartTracks() {
                 height: 300,
                 overflow: 'hidden',
                 minWidth: 250,
-                width: '70%',
               }}
-              src={step.album.cover_xl}
+              src={step.album.cover_medium}
               alt={step.title}
             />
           ) : null}
@@ -103,51 +90,10 @@ function ChartTracks() {
           flexGrow: 1,
           display: 'flex',
           flexDirection: 'row',
-          backgroundColor: 'inherit',
+          background: 'primary',
           marginTop: 1,
         }}
       >
-        <MobileStepper
-          sx={{
-            background: 'inherit',
-            display: 'flex',
-            flexDirection: 'column',
-            height: 290,
-            width: '5%',
-            minWidth: '40px',
-          }}
-          steps={maxSteps}
-          position="static"
-          activeStep={activeStep}
-          nextButton={
-            <Button
-              size="small"
-              sx={{ color: '#607d8b' }}
-              onClick={handleNext}
-              disabled={activeStep === maxSteps - 1}
-            >
-              {theme.direction === 'rtl' ? (
-                <KeyboardArrowUpIcon />
-              ) : (
-                <KeyboardArrowDownIcon />
-              )}
-            </Button>
-          }
-          backButton={
-            <Button
-              size="small"
-              sx={{ color: '#607d8b' }}
-              onClick={handleBack}
-              disabled={activeStep === 0}
-            >
-              {theme.direction === 'rtl' ? (
-                <KeyboardArrowDownIcon />
-              ) : (
-                <KeyboardArrowUpIcon />
-              )}
-            </Button>
-          }
-        />
         <AutoPlaySwipeableViews
           axis={theme.direction === 'rtl' ? 'x' : 'x-reverse'}
           index={activeStep}
@@ -157,19 +103,16 @@ function ChartTracks() {
           {displayedImage}
         </AutoPlaySwipeableViews>
         <Paper
-          square
-          elevation={5}
-          sx={{
+          elevation={0.5}
+          style={{
             display: 'flex',
-            justifyContent: 'flex-start',
+            justifyContent: 'center',
             alignItems: 'center',
             height: 300,
-            p: 4,
-            background: 'inherit',
-            color: 'inherit',
-            width: '35%',
+            p: 10,
+            width: 600,
             minWidth: 120,
-            textAlign: 'left',
+            borderRadius: 18,
           }}
         >
           {displayedTracks}
